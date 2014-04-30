@@ -70,7 +70,6 @@ public class MainActivity extends Activity{
 					showAlertDialog(MainActivity.this, "No Internet Connection",
 							"You don't have internet connection.", false);
 				}
-
 			}
 		});
 

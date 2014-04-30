@@ -26,48 +26,48 @@ public class ParseRating {
 		this.rating = rating;
 	}
 
-	/* Create an empty parse doctor */
-	public ParseRating() {
-		this.rating = new ParseObject(PConstants.PARSE_RATING);
-		rating.put("User", ParseUser.getCurrentUser());
-	}
-
-	public ArrayList<Double> getRating() {
-		ArrayList<Double> r = new ArrayList<Double>();
-		for (ParseObject e : rating) {
-			r.add(e.getDouble(PConstants.PARSE_RATING));
-		}
-		return r;
-	}
-
-	public void setRating(ArrayList<Integer> rating) {
-		this.rating = rating;
-	}
-
-	public ArrayList<String> getComments() {
-		return comments;
-	}
-
-	public void setComments(ArrayList<String> comments) {
-		this.comments = comments;
-	}
-
-	/* get the title of the doctor */
-	public String getRatings() {
-		return doctor.getString(PConstants.PARSE_ID);
-	}
-
-	/* get the author name of the doctor */
-	public String getName() {
-		return doctor.getString(PConstants.PARSE_NAME);
-	}
-
-	public void setId(String id) {
-		doctor.put(PConstants.PARSE_TITLE, title);
-	}
-
-	public void setName(String name) {
-		doctor.put(PConstants.PARSE_AUTHOR, authorName);
-	}
+//	/* Create an empty parse doctor */
+//	public ParseRating() {
+//		this.rating = new ParseObject(PConstants.PARSE_RATING);
+//		rating.put("User", ParseUser.getCurrentUser());
+//	}
+//
+//	public ArrayList<Double> getRating() {
+//		ArrayList<Double> r = new ArrayList<Double>();
+//		for (ParseObject e : rating) {
+//			r.add(e.getDouble(PConstants.PARSE_RATING));
+//		}
+//		return r;
+//	}
+//
+//	public void setRating(ArrayList<Integer> rating) {
+//		this.rating = rating;
+//	}
+//
+//	public ArrayList<String> getComments() {
+//		return comments;
+//	}
+//
+//	public void setComments(ArrayList<String> comments) {
+//		this.comments = comments;
+//	}
+//
+//	/* get the title of the doctor */
+//	public String getRatings() {
+//		return doctor.getString(PConstants.PARSE_ID);
+//	}
+//
+//	/* get the author name of the doctor */
+//	public String getName() {
+//		return doctor.getString(PConstants.PARSE_NAME);
+//	}
+//
+//	public void setId(String id) {
+//		doctor.put(PConstants.PARSE_TITLE, title);
+//	}
+//
+//	public void setName(String name) {
+//		doctor.put(PConstants.PARSE_AUTHOR, authorName);
+//	}
 
 }

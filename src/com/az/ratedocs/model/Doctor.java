@@ -2,7 +2,11 @@ package com.az.ratedocs.model;
 
 import java.util.ArrayList;
 
-public class Doctor {
+import android.app.Activity;
+
+import com.az.ratedocs.entities.DoctorInterface;
+
+public class Doctor implements DoctorInterface{
 	private String id;
 	private String name;
 	private String sex;
@@ -139,6 +143,10 @@ public class Doctor {
 				+ ", latitude=" + latitude + ", longtitude=" + longtitude
 				+ ", email=" + email + ", phone=" + phone + ", rating="
 				+ rating + ", comments=" + comments + "]";
+	}
+
+	@Override
+	public void save(Activity activity) {
 	}
 }
 

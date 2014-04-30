@@ -3,6 +3,7 @@ package com.az.ratedocs;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -16,6 +17,7 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.Toast;
+
 import com.parse.FindCallback;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
@@ -90,22 +92,17 @@ public class DoctListActivity extends Activity {
 						myDocs[i] = names.get(i);
 					}
 
-					String[] myDocDistance = new String[names.size()];
+					double[] myDocDistance = new double[names.size()];
 
 					for (int i = 0; i < names.size(); i++) {
-						myDocDistance[i] = "0";
-						// myDocDistance[i] =
-						// Double.toString(calculateLocation(latitudes.get(i),longitudes.get(i)));
+						myDocDistance[i] = 0;
 					}
 
 					for (int i = 0; i < names.size(); i++) {
-						// myDocDistance[i]= "0";
-						myDocDistance[i] = String.format(
-								"%.3f",
-								calculateLocation(latitudes.get(i),
-										longitudes.get(i)));
-						// myDocDistance[i] =
-						// Double.toString(calculateLocation(latitudes.get(i),longitudes.get(i)));
+						double a = latitudes.get(i);
+						double b = longitudes.get(i);
+
+						myDocDistance[i] = calculateLocation(a, b);
 					}
 
 					String[] myDocPhone = new String[names.size()];
@@ -121,7 +118,7 @@ public class DoctListActivity extends Activity {
 					for (int i = 0; i < names.size(); i++) {
 						HashMap<String, String> map = new HashMap<String, String>();
 						map.put("name", myDocs[i]);
-						map.put("distance", myDocDistance[i]);
+						map.put("distance", Double.toString(myDocDistance[i]));
 						map.put("phone", myDocPhone[i]);
 						mylist.add(map);
 					}
@@ -184,10 +181,6 @@ public class DoctListActivity extends Activity {
 			String message = String.format(
 					"Current Location \n Longitude: %1$s \n Latitude: %2$s",
 					location.getLongitude(), location.getLatitude());
-			Log.d("longitude", Double.toString(location.getLongitude()));
-			Log.d("latitude", Double.toString(location.getLatitude()));
-			Log.d("ooooo",
-					Double.toString(distFrom(40.23, -79.11, 40.233, -79.01)));
 			return distFrom(location.getLatitude(), location.getLongitude(),
 					latitude, longitude);
 		}
