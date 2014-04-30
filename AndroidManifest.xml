@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.az.ratedocs"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <uses-sdk
+        android:minSdkVersion="8"
+        android:targetSdkVersion="19" />
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_MOCK_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.SEND_SMS" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher1"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" >
+        <activity
+            android:name="com.az.ratedocs.MainActivity"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name="com.az.ratedocs.SelectSpecialityActivity" >
+        </activity>
+        <activity android:name="com.az.ratedocs.CreateAccountActivity" >
+        </activity>
+        <activity android:name="com.az.ratedocs.CallActivity" >
+        </activity>
+        <activity android:name="com.az.ratedocs.CommentActivity" >
+        </activity>
+        <activity android:name="com.az.ratedocs.DoctListActivity" >
+        </activity>
+        <activity android:name="com.az.ratedocs.ForgetPasswordActivity" >
+        </activity>
+        <activity android:name="com.az.ratedocs.ConfirmCreateAccountActivity" >
+        </activity>
+        <activity android:name="com.az.ratedocs.DoctorProfileActivity" >
+        </activity>
+        <activity android:name="com.az.ratedocs.RequestAppointmentActivity" >
+        </activity>
+        <activity android:name="com.az.ratedocs.AddCommentsActivity" >
+        </activity>
+        <activity android:name="com.az.ratedocs.SubmitEmailActivity" >
+        </activity>
+        <activity android:name="com.az.ratedocs.RatesActivity" >
+        </activity>
+    </application>
+
+</manifest>
