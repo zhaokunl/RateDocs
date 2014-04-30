@@ -29,7 +29,7 @@ public class OnClickFactory {
 		else if(class1.equals(DoctListActivity.class)) onClickInterface = new OnClickDoctorProfile(activity);
 		else if(class1.equals(ForgetPasswordActivity.class)) onClickInterface = new OnClickForgetPassword(activity);
 		else if(class1.equals(RequestAppointmentActivity.class)) onClickInterface = new OnClickRequestAppointment(activity);
-		else if(class1.equals(SelectSpecialityActivity.class)) onClickInterface = new OnClickSpeciality(activity);
+		else if(class1.equals(SelectSpecialityActivity.class)) onClickInterface = new OnClickSpeciality(activity, context);
 		else if(class1.equals(RatesActivity.class)) onClickInterface = new OnClickDoctorRates(activity);
 		else if(class1.equals(SubmitEmailActivity.class)) onClickInterface = new OnClickSubmitEmail(activity);
 		return onClickInterface;
