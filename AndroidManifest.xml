@@ -42,8 +42,6 @@
         </activity>
         <activity android:name="com.az.ratedocs.ForgetPasswordActivity" >
         </activity>
-        <activity android:name="com.az.ratedocs.ConfirmCreateAccountActivity" >
-        </activity>
         <activity android:name="com.az.ratedocs.DoctorProfileActivity" >
         </activity>
         <activity android:name="com.az.ratedocs.RequestAppointmentActivity" >

@@ -5,7 +5,6 @@ import android.content.Context;
 
 import com.az.ratedocs.CallActivity;
 import com.az.ratedocs.CommentActivity;
-import com.az.ratedocs.ConfirmCreateAccountActivity;
 import com.az.ratedocs.CreateAccountActivity;
 import com.az.ratedocs.DoctListActivity;
 import com.az.ratedocs.ForgetPasswordActivity;
@@ -22,7 +21,6 @@ public class OnClickFactory {
 		/* Figures out which activity called this method and returns the corresponding OnClick object */
 		if(class1.equals(CallActivity.class)) onClickInterface = new OnClickDoctorCall(activity);
 		else if(class1.equals(CommentActivity.class)) onClickInterface = new OnClickAddComments(activity, context);
-		else if(class1.equals(ConfirmCreateAccountActivity.class)) onClickInterface = new OnClickConfirmCreateAccount(activity);
 		else if(class1.equals(CreateAccountActivity.class)) onClickInterface = new OnClickCreateAccount(activity);
 		else if(class1.equals(MainActivity.class)) onClickInterface = new OnClickMainActivity(activity);
 		else if(class1.equals(DoctListActivity.class)) onClickInterface = new OnClickDoctorProfile(activity, context);
