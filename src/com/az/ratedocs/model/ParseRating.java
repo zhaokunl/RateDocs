@@ -17,26 +17,26 @@ import com.parse.ParseUser;
 
 public class ParseRating {
 
-	private List<ParseObject> rating;
+	private ParseObject doctor_rating;
 
 	/* Create a Parse doctor from an existing doctor retrieved from the server */
-	public ParseRating(List<ParseObject> rating) {
-		this.rating = rating;
+	public ParseRating(ParseObject rating) {
+		this.doctor_rating = doctor_rating;
 	}
 
-//	/* Create an empty parse doctor */
-//	public ParseRating() {
-//		this.rating = new ParseObject(PConstants.PARSE_RATING);
-//		rating.put("User", ParseUser.getCurrentUser());
-//	}
-//
-//	public ArrayList<Double> getRating() {
-//		ArrayList<Double> r = new ArrayList<Double>();
+	/* Create an empty parse doctor */
+	public ParseRating() {
+		this.doctor_rating = new ParseObject(PConstants.PARSE_RATING);
+		doctor_rating.put("User", ParseUser.getCurrentUser());
+	}
+
+	public ArrayList<Double> getRating() {
+		ArrayList<Double> r = new ArrayList<Double>();
 //		for (ParseObject e : rating) {
 //			r.add(e.getDouble(PConstants.PARSE_RATING));
 //		}
-//		return r;
-//	}
+		return r;
+	}
 //
 //	public void setRating(ArrayList<Integer> rating) {
 //		this.rating = rating;

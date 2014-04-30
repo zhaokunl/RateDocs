@@ -1,6 +1,9 @@
 package com.az.ratedocs.onclick;
 
+import com.az.ratedocs.CreateAccountActivity;
+import com.az.ratedocs.ForgetPasswordActivity;
 import com.az.ratedocs.MainActivity;
+import com.az.ratedocs.R;
 import com.az.ratedocs.entities.EntitiesHandler;
 import com.az.ratedocs.entities.HandlerFactory;
 import com.az.ratedocs.exceptionhandler.WebServiceException;
@@ -16,33 +19,33 @@ public class OnClickMainActivity implements OnClickInterface {
 
 	public OnClickMainActivity(Activity a) {
 		this.activity = a;
-		
+
 		/* Associate the on click methods with the buttons in our activity */
 		EntitiesHandler entitiesHandler = HandlerFactory.getHandler(activity);
-		try {
-			entitiesHandler.getUser();
-			StartIntent.startIntent(activity, MainActivity.class);
-		} catch (WebServiceException e) {
-			/* Do nothing */
-		}
-		
-		Button button = (Button) activity.findViewById(R.id.forgot_password_btn_login);
+		// try {
+		entitiesHandler.getUser();
+		StartIntent.startIntent(activity, MainActivity.class);
+		// } catch (WebServiceException e) {
+		/* Do nothing */
+		// }
+
+		Button button = (Button) activity.findViewById(R.id.btn_ForgetPass);
 		button.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
 				clickedForgotPassword();
 			}
 		});
-		
-		button = (Button) activity.findViewById(R.id.register);
+
+		button = (Button) activity.findViewById(R.id.btn_signup);
 		button.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
 				clickedRegisterUser();
 			}
 		});
-		
-		button = (Button) activity.findViewById(R.id.login_btn_login);
+
+		button = (Button) activity.findViewById(R.id.btn_login);
 		button.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
@@ -50,26 +53,25 @@ public class OnClickMainActivity implements OnClickInterface {
 			}
 		});
 	}
-//
-//	/* Start the forgot password activity */
-//	public void clickedForgotPassword() {
-//		StartIntent.startIntent(activity, PasswordRecoveryActivity.class);
-//	}
-//
-//	/* Start the registration activity */
-//	public void clickedRegisterUser() {
-//		StartIntent.startIntent(activity, Register.class);
-//	}
-//
-//	/* Attempt to log the user in */
-//	public void clickedLogin() {
-//
-//		/* Get the input user name and password */
-//		String uname = ((TextView) activity.findViewById(R.id.username_login)).getText().toString();
-//		String pword = ((TextView) activity.findViewById(R.id.password_login)).getText().toString();
-//
-//		/* Log the user in to the server */
-//		EntitiesHandler entityHandler = HandlerFactory.getHandler(activity);
-//		entityHandler.logIn(uname, pword, activity, Homepage.class);
-//	}
+
+    /* Start the forgot password activity */
+	public void clickedForgotPassword() {
+		  StartIntent.startIntent(activity, ForgetPasswordActivity.class);
+	}
+
+    /* Start the registration activity */
+	public void clickedRegisterUser() {
+		  StartIntent.startIntent(activity, CreateAccountActivity.class);
+	}
+
+	/* Attempt to log the user in */
+	public void clickedLogin() {
+		/* Get the input user name and password */
+	    String uname = ((TextView) activity.findViewById(R.id.username)).getText().toString();
+		String pword = ((TextView) activity.findViewById(R.id.password)).getText().toString();
+		
+		/* Log the user in to the server */
+		// EntitiesHandler entityHandler = HandlerFactory.getHandler(activity);
+		// entityHandler.logIn(uname, pword, activity, Homepage.class);
+	}
 }

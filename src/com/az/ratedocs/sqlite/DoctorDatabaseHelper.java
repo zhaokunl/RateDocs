@@ -6,23 +6,19 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.LinkedList;
 import java.util.List;
-
 import android.content.Context;
 import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteException;
 import android.database.sqlite.SQLiteOpenHelper;
-
 import com.az.ratedocs.model.Doctor;
 
 public class DoctorDatabaseHelper extends SQLiteOpenHelper {
 
 	// The Android's default system path of your application database.
 	private static String DB_PATH = "/data/data/com.example.ratedocs/databases/";
-
 	private static String DB_NAME = "doctor_profile";
-
 	private static String TABLE_DOCTOR = "doctor";
 	private static String TABLE_RATING = "rating";
 	
@@ -42,7 +38,6 @@ public class DoctorDatabaseHelper extends SQLiteOpenHelper {
 		this.myContext = context;
 	}
 	
-
 	/**
 	 * Creates a empty database on the system and rewrites it with your own
 	 * database.
@@ -71,7 +66,6 @@ public class DoctorDatabaseHelper extends SQLiteOpenHelper {
 
 			}
 		}
-
 	}
 
 	/**
@@ -90,9 +84,7 @@ public class DoctorDatabaseHelper extends SQLiteOpenHelper {
 					SQLiteDatabase.OPEN_READONLY);
 
 		} catch (SQLiteException e) {
-
 			// database does't exist yet.
-
 		}
 
 		if (checkDB != null) {
@@ -104,11 +96,6 @@ public class DoctorDatabaseHelper extends SQLiteOpenHelper {
 		return checkDB != null ? true : false;
 	}
 
-	/**
-	 * Copies your database from your local assets-folder to the just created
-	 * empty database in the system folder, from where it can be accessed and
-	 * handled. This is done by transfering bytestream.
-	 * */
 	private void copyDataBase() throws IOException {
 
 		// Open your local db as the input stream
@@ -160,8 +147,6 @@ public class DoctorDatabaseHelper extends SQLiteOpenHelper {
 	@Override
 	public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 	}
-
-	
 	
 	public List<Doctor> getDoctorList(String specialization) {
 		List<Doctor> doctorlist = new LinkedList<Doctor>();
@@ -208,9 +193,4 @@ public class DoctorDatabaseHelper extends SQLiteOpenHelper {
 		}
 		return doctor;
 	}
-	// Add your public helper methods to access and get content from the
-	// database.
-	// You could return cursors by doing "return myDataBase.query(....)" so it'd
-	// be easy
-	// to you to create adapters for your views.
 }

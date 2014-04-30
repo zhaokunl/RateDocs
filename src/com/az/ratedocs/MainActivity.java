@@ -108,17 +108,10 @@ public class MainActivity extends Activity{
 		// Handle item selection
 		switch (item.getItemId()) {
 		case R.id.menu_forgot_password:
-			forgotPassword();
 			return true;
 		default:
 			return super.onOptionsItemSelected(item);
 		}
-	}
-
-	private void forgotPassword(){
-//		FragmentManager fm = getSupportFragmentManager();
-//		ForgotPasswordDialogFragment forgotPasswordDialog = new ForgotPasswordDialogFragment();
-//	    forgotPasswordDialog.show(fm, null);
 	}
 
 	public void attemptLogin() {
