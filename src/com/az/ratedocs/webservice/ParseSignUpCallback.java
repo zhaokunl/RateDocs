@@ -1,25 +1,9 @@
-/************************************************************************************************
- *	18-641 Java for Smart Phone Development
- * 	Authors: 		Shubhang Chaudhary (shubhanc)
- * 					Fiona Britto (fbritto)
- * 					Kyle Verma (ktv)
- * 	Application: 	SmartLend
- * 	Date:			November 30th, 2013 
- ************************************************************************************************/
-
 package com.az.ratedocs.webservice;
 
 import android.app.Activity;
 import android.widget.Toast;
-
-//import com.crouchingtigers.smartlend.utility.StartIntent;
 import com.parse.ParseException;
 import com.parse.SignUpCallback;
-
-/************************************************************************************************
- * ClassName: ParseSignUpCallback.java
- * Description: Parse callback for registration
- ************************************************************************************************/
 
 public class ParseSignUpCallback extends SignUpCallback{
 
@@ -55,8 +39,5 @@ public class ParseSignUpCallback extends SignUpCallback{
 			break;
 			}
 		}
-
-
 	}
-
 }

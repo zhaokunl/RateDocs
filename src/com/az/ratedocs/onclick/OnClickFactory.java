@@ -1,26 +1,6 @@
-/************************************************************************************************
- *	18-641 Java for Smart Phone Development
- * 	Authors: 		Shubhang Chaudhary (shubhanc)
- * 					Fiona Britto (fbritto)
- * 					Kyle Verma (ktv)
- * 	Application: 	SmartLend
- * 	Date:			November 30th, 2013 
- ************************************************************************************************/
-
 package com.az.ratedocs.onclick;
 
-/* All the android imports */
-
-/************************************************************************************************
- * ClassName: OnClickFactory.java
- * Description: This factory allows each activity to get its corresponding on click object
- * 				without actually needing each activity to know which on click object corresponds
- * 				to it. This allows us to do extensive changes to how our on click handlers work
- * 				without necessarily having to change the activities that use them
- ************************************************************************************************/
-
 import android.app.Activity;
-
 import com.az.ratedocs.AddCommentsActivity;
 import com.az.ratedocs.CallActivity;
 import com.az.ratedocs.CommentActivity;
@@ -33,8 +13,6 @@ import com.az.ratedocs.RatesActivity;
 import com.az.ratedocs.RequestAppointmentActivity;
 import com.az.ratedocs.SelectSpecialityActivity;
 import com.az.ratedocs.SubmitEmailActivity;
-
-
 
 public class OnClickFactory {
 	public static OnClickInterface getOnClick(Activity activity) {

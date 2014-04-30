@@ -1,29 +1,8 @@
-/************************************************************************************************
- *	18-641 Java for Smart Phone Development
- * 	Authors: 		Shubhang Chaudhary (shubhanc)
- * 					Fiona Britto (fbritto)
- * 					Kyle Verma (ktv)
- * 	Application: 	SmartLend
- * 	Date:			November 30th, 2013 
- ************************************************************************************************/
-
-
 package com.az.ratedocs.entities;
-
-/* All the android imports */
 
 import java.util.ArrayList;
 import java.util.HashMap;
-
 import android.app.Activity;
-
-//import com.crouchingtigers.smartlend.exceptionhandler.WebServiceException;
-/************************************************************************************************
- * ClassName: EntitiesHandler.java
- * Description: This Interface allows classes to generically generate entities (book & user) and
- * 				access the server (login, logout, query, etc...) without knowledge of the
- * 				underlying server technology
- ************************************************************************************************/
 
 public interface EntitiesHandler {
 	public void logOut();

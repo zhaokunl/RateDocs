@@ -125,7 +125,6 @@ public class ParseDoctor implements DoctorInterface {
 
 
 	/* method to save the doctor to the database */
-	@Override
 	public void save(Activity activity) {
 		doctor.saveInBackground(new ParseSaveCallback(activity));
 	}
@@ -152,13 +151,11 @@ public class ParseDoctor implements DoctorInterface {
 
 	@Override
 	public ArrayList<Integer> getRating() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public ArrayList<String> getComments() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 }

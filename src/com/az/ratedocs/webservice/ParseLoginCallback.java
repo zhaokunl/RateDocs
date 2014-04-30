@@ -1,26 +1,10 @@
-/************************************************************************************************
- *	18-641 Java for Smart Phone Development
- * 	Authors: 		Shubhang Chaudhary (shubhanc)
- * 					Fiona Britto (fbritto)
- * 					Kyle Verma (ktv)
- * 	Application: 	SmartLend
- * 	Date:			November 30th, 2013 
- ************************************************************************************************/
-
 package com.az.ratedocs.webservice;
 
 import android.app.Activity;
 import android.widget.Toast;
-
-//import com.crouchingtigers.smartlend.utility.StartIntent;
 import com.parse.LogInCallback;
 import com.parse.ParseException;
 import com.parse.ParseUser;
-
-/************************************************************************************************
- * ClassName: ParseLoginCallback.java
- * Description: Parse callback for logging a user in
- ************************************************************************************************/
 
 public class ParseLoginCallback extends LogInCallback {
 

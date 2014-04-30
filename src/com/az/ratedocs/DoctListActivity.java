@@ -3,7 +3,6 @@ package com.az.ratedocs;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -17,7 +16,6 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.Toast;
-
 import com.parse.FindCallback;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
@@ -30,7 +28,7 @@ public class DoctListActivity extends Activity {
 	private static final long MINIMUM_DISTANCE_CHANGE_FOR_UPDATES = 0; // Meters
 	private static final long MINIMUM_TIME_BETWEEN_UPDATES = 1000;
 	private LocationManager locationmanager;
-	private ListView list;
+    private	ListView list;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -78,14 +76,13 @@ public class DoctListActivity extends Activity {
 					for (ParseObject d : doctorList) {
 						names.add(d.getString("name"));
 						phones.add(d.getString("phone"));
-						longitudes.add(d.getDouble("longitude"));
+						longitudes.add(d.getDouble("longtitude"));
 						latitudes.add(d.getDouble("latitude"));
 						ids.add(d.getString("ID"));
 					}
 
 					number = names.size();
 
-					Log.d("what", Integer.toString(number));
 					String[] myDocs = new String[names.size()];
 
 					for (int i = 0; i < names.size(); i++) {

@@ -1,20 +1,4 @@
-/************************************************************************************************
- *	18-641 Java for Smart Phone Development
- * 	Authors: 		Shubhang Chaudhary (shubhanc)
- * 					Fiona Britto (fbritto)
- * 					Kyle Verma (ktv)
- * 	Application: 	SmartLend
- * 	Date:			November 30th, 2013 
- ************************************************************************************************/
-
 package com.az.ratedocs.webservice;
-
-//import com.crouchingtigers.smartlend.utility.SLConstants;
-
-/************************************************************************************************
- * ClassName: PConstants.java
- * Description: Constants used by Parse objects
- ************************************************************************************************/
 
 public class PConstants {
 	public static final String PARSE_ID = "id";

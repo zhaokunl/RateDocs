@@ -2,7 +2,6 @@ package com.az.ratedocs.onclick;
 
 import com.az.ratedocs.AddCommentsActivity;
 import com.az.ratedocs.utilities.StartIntent;
-
 import android.app.Activity;
 import android.view.View;
 import android.view.View.OnClickListener;

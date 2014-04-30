@@ -3,11 +3,9 @@ package com.az.ratedocs.model;
 import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 import java.util.List;
-
 import android.app.Activity;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-
 import com.az.ratedocs.entities.DoctorInterface;
 import com.az.ratedocs.exceptionhandler.WebServiceException;
 import com.az.ratedocs.webservice.PConstants;
