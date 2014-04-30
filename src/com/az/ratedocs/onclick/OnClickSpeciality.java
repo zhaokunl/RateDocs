@@ -6,11 +6,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-
 import com.az.ratedocs.DoctListActivity;
 import com.az.ratedocs.R;
-import com.az.ratedocs.SelectSpecialityActivity;
-import com.az.ratedocs.utilities.StartIntent;
 
 public class OnClickSpeciality implements OnClickInterface, View.OnClickListener {
 	Activity activity;

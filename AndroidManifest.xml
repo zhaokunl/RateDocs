@@ -48,8 +48,6 @@
         </activity>
         <activity android:name="com.az.ratedocs.RequestAppointmentActivity" >
         </activity>
-        <activity android:name="com.az.ratedocs.SubmitEmailActivity" >
-        </activity>
         <activity android:name="com.az.ratedocs.RatesActivity" >
         </activity>
     </application>
