@@ -1,7 +1,8 @@
 package com.az.ratedocs.onclick;
 
 import android.app.Activity;
-import com.az.ratedocs.AddCommentsActivity;
+import android.content.Context;
+
 import com.az.ratedocs.CallActivity;
 import com.az.ratedocs.CommentActivity;
 import com.az.ratedocs.ConfirmCreateAccountActivity;
@@ -15,13 +16,13 @@ import com.az.ratedocs.SelectSpecialityActivity;
 import com.az.ratedocs.SubmitEmailActivity;
 
 public class OnClickFactory {
-	public static OnClickInterface getOnClick(Activity activity) {
+	public static OnClickInterface getOnClick(Activity activity, Context context) {
 		OnClickInterface onClickInterface = null;
 		Class<?> class1 = activity.getClass();
 		
 		/* Figures out which activity called this method and returns the corresponding OnClick object */
 		if(class1.equals(CallActivity.class)) onClickInterface = new OnClickDoctorCall(activity);
-		else if(class1.equals(CommentActivity.class)) onClickInterface = new OnClickDoctorComments(activity);
+		else if(class1.equals(CommentActivity.class)) onClickInterface = new OnClickAddComments(activity, context);
 		else if(class1.equals(ConfirmCreateAccountActivity.class)) onClickInterface = new OnClickConfirmCreateAccount(activity);
 		else if(class1.equals(CreateAccountActivity.class)) onClickInterface = new OnClickCreateAccount(activity);
 		else if(class1.equals(MainActivity.class)) onClickInterface = new OnClickMainActivity(activity);
@@ -31,7 +32,6 @@ public class OnClickFactory {
 		else if(class1.equals(SelectSpecialityActivity.class)) onClickInterface = new OnClickSpeciality(activity);
 		else if(class1.equals(RatesActivity.class)) onClickInterface = new OnClickDoctorRates(activity);
 		else if(class1.equals(SubmitEmailActivity.class)) onClickInterface = new OnClickSubmitEmail(activity);
-		else if(class1.equals(AddCommentsActivity.class)) onClickInterface = new OnClickAddComments(activity);
 		return onClickInterface;
 	}
 }

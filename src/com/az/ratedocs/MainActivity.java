@@ -1,11 +1,13 @@
 package com.az.ratedocs;
 
 import java.util.Locale;
+
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.Menu;
@@ -15,13 +17,15 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import com.az.ratedocs.exceptionhandler.WebServiceException;
 import com.parse.LogInCallback;
 import com.parse.Parse;
 import com.parse.ParseAnalytics;
 import com.parse.ParseException;
 import com.parse.ParseUser;
 
-public class MainActivity extends Activity{
+public class MainActivity extends Activity {
 	private Button btn_LoginIn = null;
 	private Button btn_SignUp = null;
 	private Button btn_ForgetPass = null;
@@ -40,7 +44,11 @@ public class MainActivity extends Activity{
 		setContentView(R.layout.activity_sign_in);
 		
 		//Initializing Parse SDK
-		onCreateParse();
+		try{
+		onCreateParse();}
+		catch (Exception e) {
+			Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_LONG).show();
+		}
 		//Calling ParseAnalytics to see Analytics of our app
 		ParseAnalytics.trackAppOpened(getIntent());
 		

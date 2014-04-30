@@ -1,7 +1,6 @@
 package com.az.ratedocs.onclick;
 
 import android.app.Activity;
-import com.az.ratedocs.AddCommentsActivity;
 import com.az.ratedocs.utilities.StartIntent;
 
 public class OnClickForgetPassword implements OnClickInterface {
@@ -19,10 +18,5 @@ Activity activity;
 //			}
 //			
 //		});
-	}
-
-	/* Start the edit book details activity */
-	public void clickedAddLend() {
-		StartIntent.startIntent(activity, AddCommentsActivity.class);
 	}
 }
