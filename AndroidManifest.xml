@@ -34,8 +34,6 @@
         </activity>
         <activity android:name="com.az.ratedocs.CreateAccountActivity" >
         </activity>
-        <activity android:name="com.az.ratedocs.CallActivity" >
-        </activity>
         <activity android:name="com.az.ratedocs.CommentActivity" >
         </activity>
         <activity android:name="com.az.ratedocs.DoctListActivity" >
@@ -43,8 +41,6 @@
         <activity android:name="com.az.ratedocs.ForgetPasswordActivity" >
         </activity>
         <activity android:name="com.az.ratedocs.DoctorProfileActivity" >
-        </activity>
-        <activity android:name="com.az.ratedocs.RequestAppointmentActivity" >
         </activity>
         <activity android:name="com.az.ratedocs.RatesActivity" >
         </activity>

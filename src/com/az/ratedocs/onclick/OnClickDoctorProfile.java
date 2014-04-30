@@ -1,217 +1,286 @@
 package com.az.ratedocs.onclick;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.location.Location;
-import android.location.LocationListener;
-import android.location.LocationManager;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ListView;
-import android.widget.SimpleAdapter;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ImageButton;
+import android.widget.ImageView;
+import android.widget.RatingBar;
+import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
-import com.az.ratedocs.DoctorProfileActivity;
+import android.widget.AdapterView.OnItemSelectedListener;
+import android.widget.RatingBar.OnRatingBarChangeListener;
+import com.az.ratedocs.CommentActivity;
 import com.az.ratedocs.R;
 import com.parse.FindCallback;
+import com.parse.GetCallback;
+import com.parse.GetDataCallback;
+import com.parse.ParseFile;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
 
-public class OnClickDoctorProfile implements OnClickInterface {
+public class OnClickDoctorProfile implements OnClickInterface,
+		OnItemSelectedListener {
 	Activity activity;
-	private int number = 0;
-	private ArrayList<String> ids = new ArrayList<String>();
-	private String username;
-	private static final long MINIMUM_DISTANCE_CHANGE_FOR_UPDATES = 0; // Meters
-	private static final long MINIMUM_TIME_BETWEEN_UPDATES = 1000;
-	private LocationManager locationmanager;
-	private ListView list;
 	private Context context;
+	private ImageButton call;
+	private Button request;
+	private Button comment;
+	private EditText t;
+	private Spinner s1, s2;
+	private RatingBar ratingBar;
+	private ParseObject doctor;
+	private TextView text5;
+	private String selected_day, selected_month;
+	private List<String> days = new ArrayList<String>();
+	private List<String> months = new ArrayList<String>();
+	private ArrayList<Double> scores = new ArrayList<Double>();
+	private ArrayList<String> comments = new ArrayList<String>();
+	private double totalrating = 0.0;
+	private String id;
+	private String username;
 
 	/* Associate the on click methods with our buttons */
-	public OnClickDoctorProfile(Activity activity, Context context) {
+	public OnClickDoctorProfile(final Activity activity, Context context) {
 		this.activity = activity;
 		this.context = context;
 
-		locationmanager = (LocationManager) activity
-				.getSystemService(Context.LOCATION_SERVICE);
-
-		locationmanager.requestLocationUpdates(LocationManager.GPS_PROVIDER,
-				MINIMUM_TIME_BETWEEN_UPDATES,
-				MINIMUM_DISTANCE_CHANGE_FOR_UPDATES, new MyLocationListener());
-
-		populateDocts();
-		registerclickCall();
-	}
-
-	private void populateDocts() {
 		String value = "";
 		String name = "";
 		Bundle extras = activity.getIntent().getExtras();
 
 		if (extras != null) {
-			value = extras.getString("string");
+			value = extras.getString("id");
 			name = extras.getString("username");
 		}
 
+		id = value;
 		username = name;
 
+		ratingBar = (RatingBar) activity.findViewById(R.id.ratingBar1);
+
 		ParseQuery<ParseObject> query = ParseQuery.getQuery("doctor_profile");
-
-		if (value.equals("All")) {
-		} else {
-			query.whereEqualTo("specialization", value);
-		}
-
-		query.findInBackground(new FindCallback<ParseObject>() {
-			public void done(List<ParseObject> doctorList,
-					com.parse.ParseException e) {
-				if (e == null) {
-					ArrayList<String> names = new ArrayList<String>();
-					ArrayList<String> phones = new ArrayList<String>();
-					ArrayList<Double> longitudes = new ArrayList<Double>();
-					ArrayList<Double> latitudes = new ArrayList<Double>();
-
-					for (ParseObject d : doctorList) {
-						names.add(d.getString("name"));
-						phones.add(d.getString("phone"));
-						longitudes.add(d.getDouble("longtitude"));
-						latitudes.add(d.getDouble("latitude"));
-						ids.add(d.getString("ID"));
-					}
-
-					number = names.size();
-
-					String[] myDocs = new String[names.size()];
-
-					for (int i = 0; i < names.size(); i++) {
-						myDocs[i] = names.get(i);
-					}
-
-					double[] myDocDistance = new double[names.size()];
-
-					for (int i = 0; i < names.size(); i++) {
-						myDocDistance[i] = 0;
-					}
-
-					for (int i = 0; i < names.size(); i++) {
-						double a = latitudes.get(i);
-						double b = longitudes.get(i);
-
-						myDocDistance[i] = calculateLocation(a, b);
-					}
-
-					String[] myDocPhone = new String[names.size()];
-
-					for (int i = 0; i < names.size(); i++) {
-						myDocPhone[i] = phones.get(i);
-					}
-
-					list = (ListView) activity.findViewById(R.id.listView1);
-
-					ArrayList<HashMap<String, String>> mylist = new ArrayList<HashMap<String, String>>();
-
-					for (int i = 0; i < names.size(); i++) {
-						HashMap<String, String> map = new HashMap<String, String>();
-						map.put("name", myDocs[i]);
-						map.put("distance", Double.toString(myDocDistance[i]));
-						map.put("phone", myDocPhone[i]);
-						mylist.add(map);
-					}
-
-					SimpleAdapter adapter = new SimpleAdapter(context, mylist,
-							R.layout.activity_doctor_list, new String[] {
-									"name", "distance", "phone" }, new int[] {
-									R.id.name, R.id.distance, R.id.phone });
-					list.setAdapter(adapter);
-
-					Log.d("score", "Retrieved " + names.size() + " scores");
+		query.whereEqualTo("ID", value);
+		query.getFirstInBackground(new GetCallback<ParseObject>() {
+			public void done(ParseObject object, com.parse.ParseException e) {
+				if (object == null) {
+					Log.d("score", "The getFirst request failed.");
 				} else {
-					Log.d("score", "Error: " + e.getMessage());
+
+					doctor = object;
+
+					ParseFile fileObject = (ParseFile) object.get("photo");
+					fileObject.getDataInBackground(new GetDataCallback() {
+						@Override
+						public void done(byte[] data, com.parse.ParseException e) {
+
+							if (e == null) {
+								Bitmap bmp = BitmapFactory.decodeByteArray(
+										data, 0, data.length);
+								ImageView pic;
+
+								pic = (ImageView) activity
+										.findViewById(R.id.image);
+								pic.setImageBitmap(bmp);
+							} else {
+								Toast.makeText(
+										activity.getApplicationContext(),
+										e.getMessage(), Toast.LENGTH_LONG)
+										.show();
+							}
+						}
+					});
+
+					TextView text1 = (TextView) activity
+							.findViewById(R.id.textView1);
+					text1.setText(object.getString("name"));
+					TextView text2 = (TextView) activity
+							.findViewById(R.id.textView2);
+					text2.setText(object.getString("sex"));
+					TextView text3 = (TextView) activity
+							.findViewById(R.id.textView3);
+					text3.setText(object.getString("specialization"));
+					TextView text4 = (TextView) activity
+							.findViewById(R.id.textView4);
+					text4.setText(object.getString("address"));
+
+					text5 = (TextView) activity.findViewById(R.id.textView5);
+					getRatings(id);
+
+					t = (EditText) activity.findViewById(R.id.editText6);
+
+					s1 = (Spinner) activity.findViewById(R.id.spinner1);
+					s2 = (Spinner) activity.findViewById(R.id.spinner2);
+
+					appointment();
+					callDoctor();
+
+					// Set ChangeListener to Rating Bar
+					ratingBar
+							.setOnRatingBarChangeListener(new OnRatingBarChangeListener() {
+								public void onRatingChanged(
+										RatingBar ratingBar, float rating,
+										boolean fromUser) {
+
+									ParseObject newrating = new ParseObject(
+											"ratings");
+									newrating.put("rating", rating);
+									newrating.put("doctorID", id);
+									newrating.put("username", username);
+									newrating.saveInBackground();
+
+									Toast.makeText(
+											activity.getApplicationContext(),
+											"Your Selected Ratings  : "
+													+ String.valueOf(rating),
+											Toast.LENGTH_LONG).show();
+								}
+							});
+
+					gotoComments();
+
+					Log.d("score", "Retrieved the object.");
 				}
 			}
 		});
 	}
 
-	private void registerclickCall() {
-		list = (ListView) activity.findViewById(R.id.listView1);
-		list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+	public void callDoctor() {
+		call = (ImageButton) activity.findViewById(R.id.call);
+
+		call.setOnClickListener(new View.OnClickListener() {
 
 			@Override
-			public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,
-					long arg3) {
+			public void onClick(View arg0) {
+				Intent Contact = new Intent(Intent.ACTION_CALL);
+				Contact.setData(Uri.parse("tel:" + doctor.getString("phone")));
+				activity.startActivity(Contact);
+			}
+		});
+	}
 
-				for (int i = 0; i < number; i++) {
-					if (arg2 == i) {
-						Intent i1 = new Intent(context,
-								DoctorProfileActivity.class);
-						i1.putExtra("id", ids.get(i));
-						i1.putExtra("username", username);
-						activity.startActivity(i1);
+	// get the ratings from the database and calculate the average score
+	public void getRatings(String value) {
+		ParseQuery<ParseObject> query = ParseQuery.getQuery("ratings");
+		query.whereEqualTo("doctorID", value);
+		query.findInBackground(new FindCallback<ParseObject>() {
+			public void done(List<ParseObject> ratinglist,
+					com.parse.ParseException e) {
+				if (e == null) {
+					Log.d("why", "not that into u");
+
+					for (ParseObject d : ratinglist) {
+						scores.add(d.getDouble("rating"));
+						comments.add(d.getString("comment"));
 					}
+
+					double sum = 0.0;
+					for (int i = 0; i < scores.size(); i++) {
+						sum += scores.get(i);
+					}
+
+					Log.d("cry", Double.toString(sum));
+
+					totalrating = sum / scores.size();
+					String total = String.format("%.2f", totalrating);
+					text5.setText(total);
+					Log.d("cryagain", Double.toString(totalrating));
+				} else {
+					Log.d("rating", "The getRatings request failed.");
 				}
 			}
 		});
 	}
 
-	public static double distFrom(double lat1, double lng1, double lat2,
-			double lng2) {
-		double earthRadius = 3958.75;
-		double dLat = Math.toRadians(lat2 - lat1);
-		double dLng = Math.toRadians(lng2 - lng1);
-		double a = Math.sin(dLat / 2) * Math.sin(dLat / 2)
-				+ Math.cos(Math.toRadians(lat1))
-				* Math.cos(Math.toRadians(lat2)) * Math.sin(dLng / 2)
-				* Math.sin(dLng / 2);
-		double c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
-		double dist = earthRadius * c;
-		double kmConversion = 1.609;
-		return (double) (dist * kmConversion);
+	// send email to the doctor for an appointment
+	public void appointment() {
+		for (int i = 1; i <= 31; i++) {
+			days.add("" + i);
+		}
+
+		for (int i = 1; i <= 12; i++) {
+			months.add("" + i);
+		}
+
+		ArrayAdapter<String> adapter_month = new ArrayAdapter<String>(context,
+				android.R.layout.simple_spinner_item, months);
+		adapter_month
+				.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+		s1.setAdapter(adapter_month);
+		s1.setOnItemSelectedListener(this);
+
+		ArrayAdapter<String> adapter_year = new ArrayAdapter<String>(context,
+				android.R.layout.simple_spinner_item, days);
+		adapter_year
+				.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+		s2.setAdapter(adapter_year);
+		s2.setOnItemSelectedListener(this);
+
+		request = (Button) activity.findViewById(R.id.req);
+		request.setOnClickListener(new View.OnClickListener() {
+
+			String subject = "Appointment";
+			String month = s1.getSelectedItem().toString();
+			String day = s2.getSelectedItem().toString();
+			String message = month + " " + day + " " + t.getText().toString();
+
+			@Override
+			public void onClick(View arg0) {
+				Intent intentEmail = new Intent(Intent.ACTION_SEND);
+				intentEmail.putExtra(Intent.EXTRA_EMAIL, new String[] { doctor
+						.getString("email").toString() });
+				intentEmail.putExtra(Intent.EXTRA_SUBJECT, subject.toString());
+				intentEmail.putExtra(Intent.EXTRA_TEXT, message.toString());
+				intentEmail.setType("message/rfc822");
+				activity.startActivity(Intent.createChooser(intentEmail,
+						"Choose an email provider :"));
+			}
+		});
 	}
 
-	protected double calculateLocation(double latitude, double longitude) {
-		Location location = locationmanager
-				.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+	public void gotoComments() {
+		comment = (Button) activity.findViewById(R.id.comment);
+		comment.setOnClickListener(new View.OnClickListener() {
 
-		if (location != null) {
-			String message = String.format(
-					"Current Location \n Longitude: %1$s \n Latitude: %2$s",
-					location.getLongitude(), location.getLatitude());
-			return distFrom(location.getLatitude(), location.getLongitude(),
-					latitude, longitude);
-		}
-		return 0;
+			@Override
+			public void onClick(View arg0) {
+				Intent i1 = new Intent(context, CommentActivity.class);
+				i1.putExtra("id", id);
+				i1.putExtra("username", username);
+				activity.startActivity(i1);
+			}
+		});
 	}
 
-	private class MyLocationListener implements LocationListener {
-		@Override
-		public void onStatusChanged(String s, int i, Bundle b) {
-			Toast.makeText(context, "Provider status changed",
-					Toast.LENGTH_LONG).show();
-		}
+	@Override
+	public void onItemSelected(AdapterView<?> arg0, View arg1, int pos,
+			long arg3) {
+		switch (arg0.getId()) {
+		case R.id.spinner1:
+			selected_month = arg0.getItemAtPosition(pos).toString();
 
-		@Override
-		public void onProviderDisabled(String s) {
-			Toast.makeText(context,
-					"Provider disabled by the user. GPS turned off",
-					Toast.LENGTH_LONG).show();
-		}
+			break;
+		case R.id.spinner2:
+			selected_day = arg0.getItemAtPosition(pos).toString();
 
-		@Override
-		public void onProviderEnabled(String s) {
-			Toast.makeText(context,
-					"Provider enabled by the user. GPS turned on",
-					Toast.LENGTH_LONG).show();
-		}
-
-		@Override
-		public void onLocationChanged(Location location) {
+			break;
 		}
 	}
 
+	@Override
+	public void onNothingSelected(AdapterView<?> arg0) {
+	}
 }
