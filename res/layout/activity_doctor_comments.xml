@@ -21,21 +21,23 @@
                 android:id="@+id/username"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="#0000ff" />
-            
+                android:textColor="@color/white"
+                android:textSize="15sp" />
+
             <TextView
                 android:id="@+id/colon"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="#0000ff" />
+                android:textColor="@color/white"
+                android:textSize="15sp" />
 
             <TextView
                 android:id="@+id/comment"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:textColor="#0000ff" />
-
+                android:textColor="@color/white"
+                android:textSize="15sp" />
         </LinearLayout>
     </ScrollView>
 

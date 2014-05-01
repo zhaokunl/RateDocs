@@ -1,8 +1,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:orientation="vertical" 
-     android:background="#ccffff">
+    android:background="@drawable/background"
+    android:orientation="vertical" >
 
     <ScrollView
         android:id="@+id/scroll_id"
@@ -20,8 +20,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:text="Search for doctors by specialities:"
-                android:textSize="20dp"
-                  android:textColor="#0000ff" />
+                android:textColor="@color/white"
+                android:textSize="15sp" />
 
             <Button
                 android:id="@+id/button1"
@@ -30,8 +30,8 @@
                 android:layout_alignLeft="@+id/textView1"
                 android:layout_below="@+id/textView1"
                 android:layout_marginTop="20dp"
-                android:text="All" 
-                 android:textColor="#ffffff"/>
+                android:text="All"
+                android:textColor="@color/white" />
 
             <Button
                 android:id="@+id/button2"
@@ -39,8 +39,8 @@
                 android:layout_height="match_parent"
                 android:layout_alignLeft="@+id/button1"
                 android:layout_below="@+id/button1"
-                android:text="Cardiology" 
-                 android:textColor="#ffffff"/>
+                android:text="Cardiology"
+                android:textColor="@color/white" />
 
             <Button
                 android:id="@+id/button3"
@@ -48,8 +48,8 @@
                 android:layout_height="match_parent"
                 android:layout_alignLeft="@+id/button2"
                 android:layout_below="@+id/button2"
-                android:text="Dentistry" 
-                 android:textColor="#ffffff"/>
+                android:text="Dentistry"
+                android:textColor="@color/white" />
 
             <Button
                 android:id="@+id/button4"
@@ -58,7 +58,7 @@
                 android:layout_alignParentLeft="true"
                 android:layout_below="@+id/button3"
                 android:text="Dermatology"
-                 android:textColor="#ffffff" />
+                android:textColor="@color/white" />
 
             <Button
                 android:id="@+id/button5"
@@ -67,7 +67,7 @@
                 android:layout_alignParentLeft="true"
                 android:layout_below="@+id/button4"
                 android:text="Family Medicine"
-                 android:textColor="#ffffff" />
+                android:textColor="@color/white" />
 
             <Button
                 android:id="@+id/button6"
@@ -75,8 +75,8 @@
                 android:layout_height="match_parent"
                 android:layout_alignLeft="@+id/button1"
                 android:layout_below="@+id/button1"
-                android:text="General Surgery" 
-                 android:textColor="#ffffff"/>
+                android:text="General Surgery"
+                android:textColor="@color/white" />
 
             <Button
                 android:id="@+id/button7"
@@ -85,7 +85,7 @@
                 android:layout_alignLeft="@+id/button2"
                 android:layout_below="@+id/button2"
                 android:text="Nephrology"
-                 android:textColor="#ffffff" />
+                android:textColor="@color/white" />
 
             <Button
                 android:id="@+id/button8"
@@ -93,8 +93,8 @@
                 android:layout_height="match_parent"
                 android:layout_alignParentLeft="true"
                 android:layout_below="@+id/button3"
-                android:text="Neurology" 
-                 android:textColor="#ffffff"/>
+                android:text="Neurology"
+                android:textColor="@color/white" />
 
             <Button
                 android:id="@+id/button9"
@@ -103,7 +103,7 @@
                 android:layout_alignParentLeft="true"
                 android:layout_below="@+id/button4"
                 android:text="Obstetrics and Gynecology"
-                 android:textColor="#ffffff" />
+                android:textColor="@color/white" />
 
             <Button
                 android:id="@+id/button10"
@@ -111,8 +111,8 @@
                 android:layout_height="match_parent"
                 android:layout_alignParentLeft="true"
                 android:layout_below="@+id/button4"
-                android:text="Oncology" 
-                 android:textColor="#ffffff"/>
+                android:text="Oncology"
+                android:textColor="@color/white" />
         </LinearLayout>
     </ScrollView>
 

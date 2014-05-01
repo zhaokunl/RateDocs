@@ -1,7 +1,6 @@
 package com.az.ratedocs.webservice;
 
 import android.app.Activity;
-
 import com.az.ratedocs.entities.UserInfoInterface;
 
 public class ParseInfoUser implements UserInfoInterface {

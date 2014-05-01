@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     style="@style/LoginFormContainer"
-       android:layout_width="fill_parent"
+    android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:orientation="vertical"
-     android:background="#ccffff"
-     >
+    android:background="@drawable/background"
+    android:orientation="vertical" >
 
     <TextView
         android:id="@+id/orTV"
@@ -15,9 +14,8 @@
         android:maxLines="1"
         android:singleLine="true"
         android:text="@string/orTitle"
-        android:textSize="20dp" 
         android:textColor="#0000ff"
-       />
+        android:textSize="20dp" />
 
     <ImageView
         android:id="@+id/imageView1"
@@ -31,7 +29,9 @@
         android:layout_height="wrap_content"
         android:hint="@string/usernameHint"
         android:maxLines="1"
-        android:singleLine="true" />
+        android:singleLine="true"
+        android:textColor="@color/white"
+        android:textSize="15sp" />
 
     <EditText
         android:id="@+id/password"
@@ -43,7 +43,9 @@
         android:imeOptions="actionUnspecified"
         android:inputType="textPassword"
         android:maxLines="1"
-        android:singleLine="true" />
+        android:singleLine="true"
+        android:textColor="@color/white"
+        android:textSize="15sp" />
 
     <Button
         android:id="@+id/btn_login"
@@ -61,8 +63,8 @@
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="16dp"
         android:text="@string/orText"
-         android:textColor="#0000ff"
-         />
+        android:textColor="@color/white"
+        android:textSize="15sp" />
 
     <Button
         android:id="@+id/btn_signup"
@@ -70,16 +72,13 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:text="@string/action_register"
-      
-     
-         android:textColor="#ffffff" />
+        android:textColor="#ffffff" />
 
     <Button
         android:id="@+id/btn_ForgetPass"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="Forgot Password" 
-      
-         android:textColor="#ffffff"/>
+        android:text="Forgot Password"
+        android:textColor="#ffffff" />
 
 </LinearLayout>

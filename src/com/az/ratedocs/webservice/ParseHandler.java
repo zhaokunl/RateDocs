@@ -1,12 +1,9 @@
 package com.az.ratedocs.webservice;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
-
 import android.app.Activity;
-
 import com.az.ratedocs.entities.DoctorInterface;
 import com.az.ratedocs.entities.EntitiesHandler;
 import com.az.ratedocs.entities.UserInfoInterface;

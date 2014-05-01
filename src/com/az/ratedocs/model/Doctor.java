@@ -1,7 +1,6 @@
 package com.az.ratedocs.model;
 
 import java.util.ArrayList;
-import android.app.Activity;
 import com.az.ratedocs.entities.DoctorInterface;
 
 public class Doctor implements DoctorInterface{

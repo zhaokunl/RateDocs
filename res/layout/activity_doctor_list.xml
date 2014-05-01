@@ -1,27 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- row.xml -->
-<LinearLayout
-     xmlns:android="http://schemas.android.com/apk/res/android"
-     android:paddingTop="4dip"
-     android:paddingBottom="6dip"
-     android:layout_width="fill_parent"
-     android:layout_height="wrap_content"
-     android:orientation="horizontal"
-     android:background="#ccffff" >
- 
-     <TextView android:id="@+id/name"
-         android:layout_width="200sp"
-         android:layout_height="wrap_content"
-         android:textColor="#0000ff"
-         />
- 
-     <TextView android:id="@+id/distance"
-         android:layout_width="200sp"
-         android:layout_height="wrap_content" android:layout_weight="1"
-         android:textColor="#0000ff"/>
- 
-     <TextView android:id="@+id/phone"
-         android:layout_width="200sp"
-         android:layout_height="wrap_content"  android:layout_weight="1"
-         android:textColor="#0000ff"/>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:paddingBottom="6dip"
+    android:paddingTop="4dip" >
+
+    <TextView
+        android:id="@+id/name"
+        android:layout_width="200sp"
+        android:layout_height="wrap_content"
+        android:textColor="@color/white"
+        android:textSize="15sp" />
+
+    <TextView
+        android:id="@+id/distance"
+        android:layout_width="200sp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:textColor="@color/white"
+        android:textSize="15sp" />
+
+    <TextView
+        android:id="@+id/phone"
+        android:layout_width="200sp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:textColor="@color/white"
+        android:textSize="15sp" />
+
 </LinearLayout>
