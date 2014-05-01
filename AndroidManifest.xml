@@ -44,6 +44,8 @@
         </activity>
         <activity android:name="com.az.ratedocs.RatesActivity" >
         </activity>
+        <activity android:name="com.az.ratedocs.SignInActivity" >
+        </activity>
     </application>
 
 </manifest>

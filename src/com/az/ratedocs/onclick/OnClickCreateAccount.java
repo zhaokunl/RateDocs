@@ -14,7 +14,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 import com.az.ratedocs.ConnectionDetector;
-import com.az.ratedocs.MainActivity;
+import com.az.ratedocs.SignInActivity;
 import com.az.ratedocs.R;
 import com.parse.ParseException;
 import com.parse.ParseUser;
@@ -154,7 +154,7 @@ public class OnClickCreateAccount implements OnClickInterface, OnClickListener{
 				if (e == null) {
 					signUpMsg("Account Created Successfully");
 					Intent in = new Intent(activity.getApplicationContext(),
-							MainActivity.class);
+							SignInActivity.class);
 					activity.startActivity(in);
 				} else {
 					// Sign up didn't succeed. Look at the ParseException

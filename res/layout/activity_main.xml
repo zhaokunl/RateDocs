@@ -6,6 +6,19 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context=".MainActivity" >
+    android:background="@drawable/welcome"
+    tools:context=".SignInActivity"
+     >
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="200sp"
+        android:layout_height="150sp"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="80dp"
+        android:background="@drawable/button"
+        android:text="Start"
+        android:textColor="@color/white" />
 
 </RelativeLayout>
