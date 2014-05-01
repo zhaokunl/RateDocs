@@ -7,7 +7,6 @@ import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-
 public class UserDatabaseHelper {
 
 	//initial declarations
@@ -52,7 +51,6 @@ public class UserDatabaseHelper {
 		}
 		@Override
 		public void onCreate(SQLiteDatabase db) {
-			// TODO Auto-generated method stub
 			try{
 				db.execSQL(TABLE_CREATE);
 			}
@@ -65,7 +63,6 @@ public class UserDatabaseHelper {
 
 		@Override
 		public void onUpgrade(SQLiteDatabase db, int arg1, int arg2) {
-			// TODO Auto-generated method stub
 			db.execSQL("DROP TABLE IF EXISTS studentTable");
 			onCreate(db);
 		}
@@ -97,7 +94,6 @@ public class UserDatabaseHelper {
 
 	}
 	public String getData() {
-		// TODO Auto-generated method stub
 		String[] columns=new String[]{pat_user,pat_name,pat_pass,pat_cpass,pat_email};
 		Cursor c=db.query(TABLE_NAME, columns, null, null, null, null, null);
 		String result=" ";
@@ -126,7 +122,6 @@ public class UserDatabaseHelper {
 
 	public String Exists(String user,String pass)
 	{
-		// TODO Auto-generated method stub
 		String[] columns=new String[]{pat_user,pat_name,pat_pass,pat_cpass,pat_email};
 		Cursor c=db.query(TABLE_NAME, columns, null, null, null, null, null);
 		String result=" ";
@@ -154,7 +149,6 @@ public class UserDatabaseHelper {
 	
 	public int SearchExists(String user)
 	{
-		// TODO Auto-generated method stub
 		String[] columns=new String[]{pat_user,pat_name,pat_pass,pat_cpass,pat_email};
 		Cursor c=db.query(TABLE_NAME, columns, null, null, null, null, null);
 		String result=" ";

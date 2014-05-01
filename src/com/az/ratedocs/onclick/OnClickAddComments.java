@@ -69,7 +69,6 @@ public class OnClickAddComments implements OnClickInterface {
 		id = doc_id;
 
 		ParseQuery<ParseObject> query = ParseQuery.getQuery("ratings");
-
 		query.whereEqualTo("doctorID", doc_id);
 
 		query.findInBackground(new FindCallback<ParseObject>() {
@@ -117,8 +116,6 @@ public class OnClickAddComments implements OnClickInterface {
 							new String[] { "username", "colon", "comment" },
 							new int[] { R.id.username, R.id.colon, R.id.comment });
 					list.setAdapter(adapter);
-
-					Log.d("score", "Retrieved " + usernames.size() + " scores");
 				} else {
 					Log.d("score", "Error: " + e.getMessage());
 				}

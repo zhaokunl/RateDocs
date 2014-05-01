@@ -1,75 +1,54 @@
 package com.az.ratedocs.model;
 
-import java.io.ByteArrayOutputStream;
-import java.util.ArrayList;
-import java.util.List;
-import android.app.Activity;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import com.az.ratedocs.entities.DoctorInterface;
-import com.az.ratedocs.exceptionhandler.WebServiceException;
+import com.az.ratedocs.entities.RatingInterface;
 import com.az.ratedocs.webservice.PConstants;
-import com.az.ratedocs.webservice.ParseSaveCallback;
-import com.parse.ParseException;
-import com.parse.ParseFile;
 import com.parse.ParseObject;
 import com.parse.ParseUser;
 
-public class ParseRating {
+public class ParseRating implements RatingInterface {
 
 	private ParseObject doctor_rating;
 
 	/* Create a Parse doctor from an existing doctor retrieved from the server */
-	public ParseRating(ParseObject rating) {
+	public ParseRating(ParseObject doctor_rating) {
 		this.doctor_rating = doctor_rating;
 	}
 
 	/* Create an empty parse doctor */
 	public ParseRating() {
 		this.doctor_rating = new ParseObject(PConstants.PARSE_RATING);
-		doctor_rating.put("User", ParseUser.getCurrentUser());
+		doctor_rating.put("username", ParseUser.getCurrentUser());
 	}
 
-	public ArrayList<Double> getRating() {
-		ArrayList<Double> r = new ArrayList<Double>();
-//		for (ParseObject e : rating) {
-//			r.add(e.getDouble(PConstants.PARSE_RATING));
-//		}
-		return r;
+	public Double getRating() {
+		return doctor_rating.getDouble(PConstants.PARSE_RATING);
 	}
-	
-	public Double totalRating(){ 
-		return 0.0;
-	}
-//
-//	public void setRating(ArrayList<Integer> rating) {
-//		this.rating = rating;
-//	}
-//
-//	public ArrayList<String> getComments() {
-//		return comments;
-//	}
-//
-//	public void setComments(ArrayList<String> comments) {
-//		this.comments = comments;
-//	}
-//
-//	/* get the title of the doctor */
-//	public String getRatings() {
-//		return doctor.getString(PConstants.PARSE_ID);
-//	}
-//
-//	/* get the author name of the doctor */
-//	public String getName() {
-//		return doctor.getString(PConstants.PARSE_NAME);
-//	}
-//
-//	public void setId(String id) {
-//		doctor.put(PConstants.PARSE_TITLE, title);
-//	}
-//
-//	public void setName(String name) {
-//		doctor.put(PConstants.PARSE_AUTHOR, authorName);
-//	}
 
+	public String getComment() {
+		return doctor_rating.getString(PConstants.PARSE_RATING_COMMENT);
+	}
+
+	public String getDoctorID() {
+		return doctor_rating.getString(PConstants.PARSE_RATING_DOCID);
+	}
+
+	public String getUserName() {
+		return doctor_rating.getString(PConstants.PARSE_USERNAME);
+	}
+
+	public void setRating(Double score) {
+		doctor_rating.put(PConstants.PARSE_RATING, score);
+	}
+
+	public void setComment(String comment) {
+		doctor_rating.put(PConstants.PARSE_RATING_COMMENT, comment);
+	}
+
+	public void setDoctorID(String id) {
+		doctor_rating.put(PConstants.PARSE_RATING_DOCID, id);
+	}
+
+	public void setUserName(String name) {
+		doctor_rating.put(PConstants.PARSE_USERNAME, name);
+	}
 }

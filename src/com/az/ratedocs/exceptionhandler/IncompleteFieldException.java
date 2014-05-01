@@ -1,27 +1,25 @@
-/************************************************************************************************
- *	18-641 Java for Smart Phone Development
- * 	Authors: 		Shubhang Chaudhary (shubhanc)
- * 					Fiona Britto (fbritto)
- * 					Kyle Verma (ktv)
- * 	Application: 	SmartLend
- * 	Date:			November 30th, 2013 
- ************************************************************************************************/
-
 package com.az.ratedocs.exceptionhandler;
 
-/* All the android imports */
-
-/************************************************************************************************
- * ClassName: IncompleteFieldException.java
- * Description: This Exception is for when a user has not filled in the required number of fields
- * 				but has clicked the button associated with those fields
- ************************************************************************************************/
+import android.annotation.SuppressLint;
+import java.util.Arrays;
 
 public class IncompleteFieldException extends Exception {
-
+	private static final long serialVersionUID = 2455272108926169077L;
+	
 	public IncompleteFieldException(String string) {
 		super(string);
 	}
-	private static final long serialVersionUID = 2455272108926169077L;
-
+	
+	@SuppressLint("NewApi")
+	@Override
+	public String toString() {
+		return "IncompleteFieldException [fillInStackTrace()="
+				+ fillInStackTrace() + ", getMessage()=" + getMessage()
+				+ ", getLocalizedMessage()=" + getLocalizedMessage()
+				+ ", getStackTrace()=" + Arrays.toString(getStackTrace())
+				+ ", toString()=" + super.toString() + ", getCause()="
+				+ getCause() + ", getSuppressed()="
+				+ Arrays.toString(getSuppressed()) + ", getClass()="
+				+ getClass() + ", hashCode()=" + hashCode() + "]";
+	}
 }

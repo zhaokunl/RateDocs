@@ -21,7 +21,9 @@
                 android:id="@+id/input"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/enter_comments" />
+                android:hint="@string/enter_comments"
+                android:textColor="@color/white"
+                android:textSize="25sp" />
         </TableRow>
 
         <TableRow

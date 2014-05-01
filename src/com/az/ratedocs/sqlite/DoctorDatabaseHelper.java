@@ -49,21 +49,12 @@ public class DoctorDatabaseHelper extends SQLiteOpenHelper {
 		if (dbExist) {
 			// do nothing - database already exist
 		} else {
-
-			// By calling this method and empty database will be created into
-			// the default system path
-			// of your application so we are gonna be able to overwrite that
-			// database with our database.
 			this.getReadableDatabase();
-
 			try {
-
 				copyDataBase();
 
 			} catch (IOException e) {
-
 				throw new Error("Error copying database");
-
 			}
 		}
 	}
@@ -75,7 +66,6 @@ public class DoctorDatabaseHelper extends SQLiteOpenHelper {
 	 * @return true if it exists, false if it doesn't
 	 */
 	private boolean checkDataBase() {
-
 		SQLiteDatabase checkDB = null;
 
 		try {
@@ -88,11 +78,8 @@ public class DoctorDatabaseHelper extends SQLiteOpenHelper {
 		}
 
 		if (checkDB != null) {
-
 			checkDB.close();
-
 		}
-
 		return checkDB != null ? true : false;
 	}
 
@@ -122,7 +109,6 @@ public class DoctorDatabaseHelper extends SQLiteOpenHelper {
 	}
 
 	public void openDataBase() throws SQLException {
-
 		// Open the database
 		String myPath = DB_PATH + DB_NAME;
 		myDataBase = SQLiteDatabase.openDatabase(myPath, null,
@@ -137,7 +123,6 @@ public class DoctorDatabaseHelper extends SQLiteOpenHelper {
 			myDataBase.close();
 
 		super.close();
-
 	}
 
 	@Override

@@ -247,7 +247,7 @@ int id action_context_bar 0x7f05001d
 int id action_menu_divider 0x7f050016
 int id action_menu_presenter 0x7f050017
 int id action_mode_close_button 0x7f050024
-int id action_settings 0x7f050070
+int id action_settings 0x7f050071
 int id activity_chooser_view_content 0x7f050025
 int id always 0x7f05000b
 int id beginning 0x7f050011
@@ -255,6 +255,7 @@ int id btnCreateAccount 0x7f050045
 int id btn_ForgetPass 0x7f05006e
 int id btn_login 0x7f05006c
 int id btn_signup 0x7f05006d
+int id btn_skip 0x7f05006f
 int id btn_submitforgetpassword 0x7f05005e
 int id button 0x7f05003f
 int id button1 0x7f05005f
@@ -297,7 +298,7 @@ int id listMode 0x7f050001
 int id listView1 0x7f050040
 int id list_item 0x7f050029
 int id login 0x7f05006b
-int id menu_forgot_password 0x7f05006f
+int id menu_forgot_password 0x7f050070
 int id middle 0x7f050012
 int id name 0x7f05004d
 int id never 0x7f050009

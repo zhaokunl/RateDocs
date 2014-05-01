@@ -2,7 +2,6 @@ package com.az.ratedocs.utilities;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -13,7 +12,6 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
-
 import com.az.ratedocs.R;
 import com.az.ratedocs.model.ParseDoctor;
 

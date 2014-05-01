@@ -4,22 +4,14 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Locale;
 import android.annotation.SuppressLint;
 import android.app.Activity;
-import android.content.Intent;
-import android.text.TextUtils;
-import android.view.View;
-import android.widget.EditText;
-import android.widget.Toast;
-import com.az.ratedocs.R;
-import com.az.ratedocs.SelectSpecialityActivity;
 import com.az.ratedocs.entities.DoctorInterface;
 import com.az.ratedocs.entities.EntitiesHandler;
 import com.az.ratedocs.entities.UserInfoInterface;
 import com.az.ratedocs.exceptionhandler.WebServiceException;
 import com.az.ratedocs.model.ParseDoctor;
-import com.parse.LogInCallback;
+import com.az.ratedocs.model.ParseInfoUser;
 import com.parse.Parse;
 import com.parse.ParseAnalytics;
 import com.parse.ParseException;
@@ -148,20 +140,20 @@ public class ParseHandler implements EntitiesHandler{
 		currentDoctor = doc;
 	}
 
-	/* Get the list of books that this user has added to the database */
+	/* Get the ratings */
 	@Override
 	public void getRatings(Activity activity) throws WebServiceException {
-		ParseQuery<ParseObject> query = ParseQuery.getQuery("Book");
+		ParseQuery<ParseObject> query = ParseQuery.getQuery(PConstants.PARSE_RATING);
     	if(ParseUser.getCurrentUser() == null) {
     		throw new WebServiceException("Please log in");
     	}
     	query.whereEqualTo("User", ParseUser.getCurrentUser());
     	try {
-			List<ParseObject> booklist = query.find();
-			if(booklist==null || booklist.isEmpty()) {
-				throw new WebServiceException("You don not have any books");
+			List<ParseObject> ratinglist = query.find();
+			if(ratinglist==null || ratinglist.isEmpty()) {
+				throw new WebServiceException("You don not have any ratings");
 			} else {
-				Iterator<ParseObject> iter = booklist.iterator();
+				Iterator<ParseObject> iter = ratinglist.iterator();
 				currentBookList = new ArrayList<DoctorInterface>();
 				while(iter.hasNext()) {
 					currentBookList.add(new ParseDoctor(iter.next()));

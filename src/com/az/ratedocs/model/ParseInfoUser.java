@@ -1,12 +1,9 @@
-package com.az.ratedocs.webservice;
+package com.az.ratedocs.model;
 
 import android.app.Activity;
-import android.util.Log;
-
 import com.az.ratedocs.entities.UserInfoInterface;
-import com.parse.GetCallback;
-import com.parse.ParseObject;
-import com.parse.ParseQuery;
+import com.az.ratedocs.webservice.PConstants;
+import com.az.ratedocs.webservice.ParseSignUpCallback;
 import com.parse.ParseUser;
 
 public class ParseInfoUser implements UserInfoInterface {

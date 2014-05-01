@@ -2,7 +2,6 @@ package com.az.ratedocs.webservice;
 
 import android.app.Activity;
 import android.widget.Toast;
-
 import com.az.ratedocs.utilities.StartIntent;
 import com.parse.ParseException;
 import com.parse.SignUpCallback;

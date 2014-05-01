@@ -2,9 +2,7 @@ package com.az.ratedocs.entities;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-
 import com.az.ratedocs.exceptionhandler.WebServiceException;
-
 import android.app.Activity;
 
 public interface EntitiesHandler {
