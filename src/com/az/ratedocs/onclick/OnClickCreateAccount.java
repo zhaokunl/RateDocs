@@ -13,11 +13,9 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
-
 import com.az.ratedocs.ConnectionDetector;
 import com.az.ratedocs.MainActivity;
 import com.az.ratedocs.R;
-import com.az.ratedocs.utilities.StartIntent;
 import com.parse.ParseException;
 import com.parse.ParseUser;
 import com.parse.SignUpCallback;

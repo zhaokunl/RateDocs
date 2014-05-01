@@ -12,7 +12,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
-
 import com.az.ratedocs.R;
 import com.parse.FindCallback;
 import com.parse.ParseObject;

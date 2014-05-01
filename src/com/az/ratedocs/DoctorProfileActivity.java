@@ -2,7 +2,6 @@ package com.az.ratedocs;
 
 import android.app.Activity;
 import android.os.Bundle;
-
 import com.az.ratedocs.onclick.OnClickFactory;
 import com.az.ratedocs.onclick.OnClickInterface;
 
