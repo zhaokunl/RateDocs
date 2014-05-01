@@ -33,7 +33,6 @@ public class OnClickAddComments implements OnClickInterface {
 		this.activity = activity;
 		this.context = context;
 		
-		Log.d("here", "true");
 		populateComments();
 		onComment();
 		

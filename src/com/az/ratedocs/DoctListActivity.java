@@ -15,6 +15,5 @@ public class DoctListActivity extends Activity {
 		
 		@SuppressWarnings("unused")
 		OnClickInterface onClickInterface = OnClickFactory.getOnClick(this, DoctListActivity.this);
-		Log.d("reached here or not", "yes");
 	}
 }

@@ -2,12 +2,14 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:background="@drawable/background"
+    android:gravity="center_vertical"
     android:orientation="vertical" >
 
     <ScrollView
         android:id="@+id/scroll_id"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
+        android:gravity="center_vertical"
         android:scrollbars="vertical" >
 
         <LinearLayout
@@ -19,9 +21,10 @@
                 android:id="@+id/textView1"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:gravity="center"
                 android:text="Search for doctors by specialities:"
                 android:textColor="@color/white"
-                android:textSize="15sp" />
+                android:textSize="25sp" />
 
             <Button
                 android:id="@+id/button1"

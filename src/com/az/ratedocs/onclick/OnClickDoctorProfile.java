@@ -7,46 +7,30 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.EditText;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.RatingBar;
-import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
-import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.RatingBar.OnRatingBarChangeListener;
 import com.az.ratedocs.CommentActivity;
 import com.az.ratedocs.R;
+import com.az.ratedocs.model.ParseDoctor;
 import com.parse.FindCallback;
-import com.parse.GetCallback;
 import com.parse.GetDataCallback;
 import com.parse.ParseFile;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
 
-public class OnClickDoctorProfile implements OnClickInterface,
-		OnItemSelectedListener {
+public class OnClickDoctorProfile implements OnClickInterface {
 	Activity activity;
 	private Context context;
-	private ImageButton call;
-	private Button request;
 	private Button comment;
-	private EditText t;
-	private Spinner s1, s2;
 	private RatingBar ratingBar;
-	private ParseObject doctor;
 	private TextView text5;
-	private String selected_day, selected_month;
-	private List<String> days = new ArrayList<String>();
-	private List<String> months = new ArrayList<String>();
 	private ArrayList<Double> scores = new ArrayList<Double>();
 	private ArrayList<String> comments = new ArrayList<String>();
 	private double totalrating = 0.0;
@@ -69,107 +53,59 @@ public class OnClickDoctorProfile implements OnClickInterface,
 
 		id = value;
 		username = name;
-
 		ratingBar = (RatingBar) activity.findViewById(R.id.ratingBar1);
 
-		ParseQuery<ParseObject> query = ParseQuery.getQuery("doctor_profile");
-		query.whereEqualTo("ID", value);
-		query.getFirstInBackground(new GetCallback<ParseObject>() {
-			public void done(ParseObject object, com.parse.ParseException e) {
-				if (object == null) {
-					Log.d("score", "The getFirst request failed.");
+		ParseDoctor object = new ParseDoctor(value);
+
+		ParseFile fileObject = (ParseFile) object.getPhoto();
+		fileObject.getDataInBackground(new GetDataCallback() {
+			@Override
+			public void done(byte[] data, com.parse.ParseException e) {
+
+				if (e == null) {
+					Bitmap bmp = BitmapFactory.decodeByteArray(data, 0,
+							data.length);
+					ImageView pic;
+
+					pic = (ImageView) activity.findViewById(R.id.image);
+					pic.setImageBitmap(bmp);
 				} else {
-
-					doctor = object;
-
-					ParseFile fileObject = (ParseFile) object.get("photo");
-					fileObject.getDataInBackground(new GetDataCallback() {
-						@Override
-						public void done(byte[] data, com.parse.ParseException e) {
-
-							if (e == null) {
-								Bitmap bmp = BitmapFactory.decodeByteArray(
-										data, 0, data.length);
-								ImageView pic;
-
-								pic = (ImageView) activity
-										.findViewById(R.id.image);
-								pic.setImageBitmap(bmp);
-							} else {
-								Toast.makeText(
-										activity.getApplicationContext(),
-										e.getMessage(), Toast.LENGTH_LONG)
-										.show();
-							}
-						}
-					});
-
-					TextView text1 = (TextView) activity
-							.findViewById(R.id.textView1);
-					text1.setText(object.getString("name"));
-					TextView text2 = (TextView) activity
-							.findViewById(R.id.textView2);
-					text2.setText(object.getString("sex"));
-					TextView text3 = (TextView) activity
-							.findViewById(R.id.textView3);
-					text3.setText(object.getString("specialization"));
-					TextView text4 = (TextView) activity
-							.findViewById(R.id.textView4);
-					text4.setText(object.getString("address"));
-
-					text5 = (TextView) activity.findViewById(R.id.textView5);
-					getRatings(id);
-
-					t = (EditText) activity.findViewById(R.id.editText6);
-
-					s1 = (Spinner) activity.findViewById(R.id.spinner1);
-					s2 = (Spinner) activity.findViewById(R.id.spinner2);
-
-					appointment();
-					callDoctor();
-
-					// Set ChangeListener to Rating Bar
-					ratingBar
-							.setOnRatingBarChangeListener(new OnRatingBarChangeListener() {
-								public void onRatingChanged(
-										RatingBar ratingBar, float rating,
-										boolean fromUser) {
-
-									ParseObject newrating = new ParseObject(
-											"ratings");
-									newrating.put("rating", rating);
-									newrating.put("doctorID", id);
-									newrating.put("username", username);
-									newrating.saveInBackground();
-
-									Toast.makeText(
-											activity.getApplicationContext(),
-											"Your Selected Ratings  : "
-													+ String.valueOf(rating),
-											Toast.LENGTH_LONG).show();
-								}
-							});
-
-					gotoComments();
-
-					Log.d("score", "Retrieved the object.");
+					Toast.makeText(activity.getApplicationContext(),
+							e.getMessage(), Toast.LENGTH_LONG).show();
 				}
 			}
 		});
-	}
 
-	public void callDoctor() {
-		call = (ImageButton) activity.findViewById(R.id.call);
+		TextView text1 = (TextView) activity.findViewById(R.id.textView1);
+		text1.setText(object.getName());
+		TextView text2 = (TextView) activity.findViewById(R.id.textView2);
+		text2.setText(object.getSex());
+		TextView text3 = (TextView) activity.findViewById(R.id.textView3);
+		text3.setText(object.getSpecialization());
+		TextView text4 = (TextView) activity.findViewById(R.id.textView4);
+		text4.setText(object.getAddress());
 
-		call.setOnClickListener(new View.OnClickListener() {
+		text5 = (TextView) activity.findViewById(R.id.textView5);
+		getRatings(id);
 
-			@Override
-			public void onClick(View arg0) {
-				Intent Contact = new Intent(Intent.ACTION_CALL);
-				Contact.setData(Uri.parse("tel:" + doctor.getString("phone")));
-				activity.startActivity(Contact);
+		// Set ChangeListener to Rating Bar
+		ratingBar.setOnRatingBarChangeListener(new OnRatingBarChangeListener() {
+			public void onRatingChanged(RatingBar ratingBar, float rating,
+					boolean fromUser) {
+
+				ParseObject newrating = new ParseObject("ratings");
+				newrating.put("rating", rating);
+				newrating.put("doctorID", id);
+				newrating.put("username", username);
+				newrating.saveInBackground();
+
+				Toast.makeText(activity.getApplicationContext(),
+						"Your Selected Ratings  : " + String.valueOf(rating),
+						Toast.LENGTH_LONG).show();
 			}
 		});
+
+		gotoComments();
 	}
 
 	// get the ratings from the database and calculate the average score
@@ -180,7 +116,6 @@ public class OnClickDoctorProfile implements OnClickInterface,
 			public void done(List<ParseObject> ratinglist,
 					com.parse.ParseException e) {
 				if (e == null) {
-					Log.d("why", "not that into u");
 
 					for (ParseObject d : ratinglist) {
 						scores.add(d.getDouble("rating"));
@@ -192,61 +127,12 @@ public class OnClickDoctorProfile implements OnClickInterface,
 						sum += scores.get(i);
 					}
 
-					Log.d("cry", Double.toString(sum));
-
 					totalrating = sum / scores.size();
 					String total = String.format("%.2f", totalrating);
 					text5.setText(total);
-					Log.d("cryagain", Double.toString(totalrating));
 				} else {
 					Log.d("rating", "The getRatings request failed.");
 				}
-			}
-		});
-	}
-
-	// send email to the doctor for an appointment
-	public void appointment() {
-		for (int i = 1; i <= 31; i++) {
-			days.add("" + i);
-		}
-
-		for (int i = 1; i <= 12; i++) {
-			months.add("" + i);
-		}
-
-		ArrayAdapter<String> adapter_month = new ArrayAdapter<String>(context,
-				android.R.layout.simple_spinner_item, months);
-		adapter_month
-				.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-		s1.setAdapter(adapter_month);
-		s1.setOnItemSelectedListener(this);
-
-		ArrayAdapter<String> adapter_year = new ArrayAdapter<String>(context,
-				android.R.layout.simple_spinner_item, days);
-		adapter_year
-				.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-		s2.setAdapter(adapter_year);
-		s2.setOnItemSelectedListener(this);
-
-		request = (Button) activity.findViewById(R.id.req);
-		request.setOnClickListener(new View.OnClickListener() {
-
-			String subject = "Appointment";
-			String month = s1.getSelectedItem().toString();
-			String day = s2.getSelectedItem().toString();
-			String message = month + " " + day + " " + t.getText().toString();
-
-			@Override
-			public void onClick(View arg0) {
-				Intent intentEmail = new Intent(Intent.ACTION_SEND);
-				intentEmail.putExtra(Intent.EXTRA_EMAIL, new String[] { doctor
-						.getString("email").toString() });
-				intentEmail.putExtra(Intent.EXTRA_SUBJECT, subject.toString());
-				intentEmail.putExtra(Intent.EXTRA_TEXT, message.toString());
-				intentEmail.setType("message/rfc822");
-				activity.startActivity(Intent.createChooser(intentEmail,
-						"Choose an email provider :"));
 			}
 		});
 	}
@@ -263,24 +149,5 @@ public class OnClickDoctorProfile implements OnClickInterface,
 				activity.startActivity(i1);
 			}
 		});
-	}
-
-	@Override
-	public void onItemSelected(AdapterView<?> arg0, View arg1, int pos,
-			long arg3) {
-		switch (arg0.getId()) {
-		case R.id.spinner1:
-			selected_month = arg0.getItemAtPosition(pos).toString();
-
-			break;
-		case R.id.spinner2:
-			selected_day = arg0.getItemAtPosition(pos).toString();
-
-			break;
-		}
-	}
-
-	@Override
-	public void onNothingSelected(AdapterView<?> arg0) {
 	}
 }

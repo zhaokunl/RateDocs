@@ -15,6 +15,5 @@ public class CommentActivity extends Activity{
 
 		@SuppressWarnings("unused")
 		OnClickInterface onClickInterface = OnClickFactory.getOnClick(this, CommentActivity.this);
-		Log.d("reached here or not", "yes");
 	}
 }

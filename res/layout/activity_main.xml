@@ -16,9 +16,10 @@
         android:layout_height="150sp"
         android:layout_alignParentRight="true"
         android:layout_centerVertical="true"
-        android:layout_marginRight="80dp"
+        android:layout_marginRight="87dp"
         android:background="@drawable/button"
         android:text="Start"
+        android:textSize="36sp"
         android:textColor="@color/white" />
 
 </RelativeLayout>

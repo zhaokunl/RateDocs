@@ -2,6 +2,8 @@ package com.az.ratedocs.webservice;
 
 import android.app.Activity;
 import android.widget.Toast;
+
+import com.az.ratedocs.utilities.StartIntent;
 import com.parse.ParseException;
 import com.parse.SignUpCallback;
 
@@ -22,7 +24,7 @@ public class ParseSignUpCallback extends SignUpCallback{
 		if(e == null) {
 			Toast.makeText(activity.getBaseContext(), "Registration Successful", 
 					Toast.LENGTH_SHORT).show();
-//			StartIntent.startIntent(activity, class1);
+						StartIntent.startIntent(activity, class1);
 		} else {
 			switch (e.getCode()) {
 			case 125:	Toast.makeText(activity.getBaseContext(), "Invalid Email Address", 

@@ -5,49 +5,17 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import com.az.ratedocs.DoctListActivity;
 import com.az.ratedocs.R;
 
 public class OnClickSpeciality implements OnClickInterface, View.OnClickListener {
 	Activity activity;
-	private Button all;
-	private Button cardiology;
-	private Button dentistry;
-	private Button dermatology;
-	private Button fm;
-	private Button gs;
-	private Button nephrology;
-	private Button neurology;
-	private Button og;
-	private Button oncology;
     private Context context;
 	
 	/* Associate the on click methods with our buttons */
 	public OnClickSpeciality(Activity activity, Context context) {
 		this.activity = activity;
 		this.context = context;
-		
-		all = (Button) activity.findViewById(R.id.button1);
-		all.setOnClickListener(this);
-		cardiology = (Button) activity.findViewById(R.id.button2);
-		cardiology.setOnClickListener(this);
-		dentistry = (Button) activity.findViewById(R.id.button3);
-		dentistry.setOnClickListener(this);
-		dermatology = (Button) activity.findViewById(R.id.button4);
-		dermatology.setOnClickListener(this);
-		fm = (Button) activity.findViewById(R.id.button5);
-		fm.setOnClickListener(this);
-		gs = (Button) activity.findViewById(R.id.button6);
-		gs.setOnClickListener(this);
-		nephrology = (Button) activity.findViewById(R.id.button7);
-		nephrology.setOnClickListener(this);
-		neurology = (Button) activity.findViewById(R.id.button8);
-		neurology.setOnClickListener(this);
-		og = (Button) activity.findViewById(R.id.button9);
-		og.setOnClickListener(this);
-		oncology = (Button) activity.findViewById(R.id.button10);
-		oncology.setOnClickListener(this);	
 	}
 	
 	@Override

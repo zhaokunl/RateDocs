@@ -37,6 +37,10 @@ public class ParseRating {
 //		}
 		return r;
 	}
+	
+	public Double totalRating(){ 
+		return 0.0;
+	}
 //
 //	public void setRating(ArrayList<Integer> rating) {
 //		this.rating = rating;

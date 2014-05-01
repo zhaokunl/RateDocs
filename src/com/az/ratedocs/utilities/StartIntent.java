@@ -10,6 +10,5 @@ public abstract class StartIntent {
 		
 		Intent intent = new Intent(activity, class1);
 		activity.startActivity(intent);
-	
 	}
 }

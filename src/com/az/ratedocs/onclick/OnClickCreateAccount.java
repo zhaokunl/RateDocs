@@ -1,203 +1,88 @@
 package com.az.ratedocs.onclick;
 
-import java.util.Locale;
-
+import android.annotation.SuppressLint;
 import android.app.Activity;
-import android.app.AlertDialog;
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.Intent;
-import android.text.TextUtils;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
-import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
-import com.az.ratedocs.ConnectionDetector;
-import com.az.ratedocs.SignInActivity;
 import com.az.ratedocs.R;
-import com.parse.ParseException;
-import com.parse.ParseUser;
-import com.parse.SignUpCallback;
+import com.az.ratedocs.SignInActivity;
+import com.az.ratedocs.entities.EntitiesHandler;
+import com.az.ratedocs.entities.HandlerFactory;
+import com.az.ratedocs.entities.UserInfoInterface;
+import com.az.ratedocs.exceptionhandler.IncompleteFieldException;
+import com.az.ratedocs.exceptionhandler.PasswordMatchException;
 
-public class OnClickCreateAccount implements OnClickInterface, OnClickListener{
-	Activity activity;
+public class OnClickCreateAccount implements OnClickInterface {
 
-	private EditText mUserNameEditText;
-	private EditText mEmailEditText;
-	private EditText mPasswordEditText;
-	private EditText mConfirmPasswordEditText;
-	private Button mCreateAccountButton;
-	private String mEmail;
-	private String mUsername;
-	private String mPassword;
-	private String mConfirmPassword;
+	private Activity activity;
 
-	// flag for Internet connection status
-	private Boolean isInternetPresent = false;
-	// Connection detector class
-	private ConnectionDetector cd;
+	/* associate the on click methods with the buttons */
+	public OnClickCreateAccount(Activity a) {
+		this.activity = a;
+		Button button = (Button) activity
+				.findViewById(R.id.btn_signup);
+		button.setOnClickListener(new OnClickListener() {
 
-	/* Associate the on click methods with our buttons */
-	public OnClickCreateAccount(Activity activity) {
-		this.activity = activity;
-		// creating connection detector class instance
-		cd = new ConnectionDetector(activity.getApplicationContext());
-
-		mUserNameEditText = (EditText) activity.findViewById(R.id.etUsername);
-		mEmailEditText = (EditText) activity.findViewById(R.id.etEmail);
-		mPasswordEditText = (EditText) activity.findViewById(R.id.etPassword);
-		mConfirmPasswordEditText = (EditText) activity.findViewById(R.id.etPasswordConfirm);
-
-		mCreateAccountButton = (Button) activity.findViewById(R.id.btnCreateAccount);
-		mCreateAccountButton.setOnClickListener(this);
-	}
-	
-	@Override
-	public void onClick(View v) {
-		switch (v.getId()) {
-		case R.id.btnCreateAccount:
-			// get Internet status
-			isInternetPresent = cd.isConnectingToInternet();
-			// check for Internet status
-			if (isInternetPresent) {
-				// Internet Connection is Present
-				// make HTTP requests
-				createAccount();
-			} else {
-				// Internet connection is not present
-				// Ask user to connect to Internet
-				showAlertDialog(activity.getApplicationContext(),
-						"No Internet Connection",
-						"You don't have internet connection.", false);
+			@Override
+			public void onClick(View arg0) {
+				try {
+					clickedRegister();
+				} catch (PasswordMatchException e) {
+					Toast.makeText(activity.getBaseContext(), e.getMessage(),
+							Toast.LENGTH_SHORT).show();
+				} catch (IncompleteFieldException e) {
+					Toast.makeText(activity.getBaseContext(), e.getMessage(),
+							Toast.LENGTH_SHORT).show();
+				} 
 			}
 
-			break;
-
-		default:
-			break;
-		}
-	}
-
-	private void createAccount() {
-		clearErrors();
-
-		boolean cancel = false;
-		View focusView = null;
-
-		// Store values at the time of the login attempt.
-		mEmail = mEmailEditText.getText().toString();
-		mUsername = mUserNameEditText.getText().toString();
-		mPassword = mPasswordEditText.getText().toString();
-		mConfirmPassword = mConfirmPasswordEditText.getText().toString();
-
-		// Check for a valid confirm password.
-		if (TextUtils.isEmpty(mConfirmPassword)) {
-			mConfirmPasswordEditText
-					.setError(activity.getString(R.string.error_field_required));
-			focusView = mConfirmPasswordEditText;
-			cancel = true;
-		} else if (mPassword != null && !mConfirmPassword.equals(mPassword)) {
-			mPasswordEditText
-					.setError(activity.getString(R.string.error_invalid_confirm_password));
-			focusView = mPasswordEditText;
-			cancel = true;
-		}
-		// Check for a valid password.
-		if (TextUtils.isEmpty(mPassword)) {
-			mPasswordEditText
-					.setError(activity.getString(R.string.error_field_required));
-			focusView = mPasswordEditText;
-			cancel = true;
-		} else if (mPassword.length() < 4) {
-			mPasswordEditText
-					.setError(activity.getString(R.string.error_invalid_password));
-			focusView = mPasswordEditText;
-			cancel = true;
-		}
-
-		// Check for a valid email address.
-		if (TextUtils.isEmpty(mEmail)) {
-			mEmailEditText.setError(activity.getString(R.string.error_field_required));
-			focusView = mEmailEditText;
-			cancel = true;
-		} else if (!mEmail.contains("@")) {
-			mEmailEditText.setError(activity.getString(R.string.error_invalid_email));
-			focusView = mEmailEditText;
-			cancel = true;
-		}
-
-		if (cancel) {
-			// There was an error; don't attempt login and focus the first
-			// form field with an error.
-			focusView.requestFocus();
-		} else {
-			// Show a progress spinner, and kick off a background task to
-			// perform the user login attempt.
-			Toast.makeText(activity.getApplicationContext(), "signUp",
-					Toast.LENGTH_SHORT).show();
-			signUp(mUsername.toLowerCase(Locale.getDefault()), mEmail,
-					mPassword);
-		}
-	}
-
-	private void signUp(final String mUsername, String mEmail, String mPassword) {
-		Toast.makeText(activity.getApplicationContext(), mUsername + " - " + mEmail,
-				Toast.LENGTH_SHORT).show();
-		ParseUser user = new ParseUser();
-		user.setUsername(mUsername);
-		user.setPassword(mPassword);
-		user.setEmail(mEmail);
-
-		user.signUpInBackground(new SignUpCallback() {
-			public void done(ParseException e) {
-				if (e == null) {
-					signUpMsg("Account Created Successfully");
-					Intent in = new Intent(activity.getApplicationContext(),
-							SignInActivity.class);
-					activity.startActivity(in);
-				} else {
-					// Sign up didn't succeed. Look at the ParseException
-					// to figure out what went wrong
-					signUpMsg("Account already taken.");
-				}
-			}
 		});
 	}
 
-	protected void signUpMsg(String msg) {
-		Toast.makeText(activity.getApplicationContext(), msg, Toast.LENGTH_SHORT).show();
+	/* Attempt to register the user */
+	@SuppressLint("NewApi")
+	public void clickedRegister() throws PasswordMatchException,
+			IncompleteFieldException {
+
+		/* Grab the information from the edit texts */
+		String name = ((TextView) activity
+				.findViewById(R.id.etUsername)).getText()
+				.toString();
+		String email = ((TextView) activity
+				.findViewById(R.id.etEmail)).getText().toString();
+		String uname = ((TextView) activity
+				.findViewById(R.id.etUsername)).getText()
+				.toString();
+		String pword = ((TextView) activity
+				.findViewById(R.id.etPassword)).getText()
+				.toString();
+		String cpword = ((TextView) activity
+				.findViewById(R.id.etPasswordConfirm)).getText()
+				.toString();
+
+		/*
+		 * If the password does not match the confirmation password throw an
+		 * exception
+		 */
+		if (!pword.equals(cpword))
+			throw new PasswordMatchException("Passwords must match");
+
+		/* If the user has not filled in every field throw an exception */
+		if (name.isEmpty() || email.isEmpty() || uname.isEmpty()
+				|| pword.isEmpty())
+			throw new IncompleteFieldException("Please fill in all fields");
+
+		/* get a blank user from the entities handler */
+		EntitiesHandler entityHandler = HandlerFactory.getHandler(activity);
+		UserInfoInterface user = entityHandler.getUser();
+
+		/* Give the user the new credentials and attempt to register them */
+		user.setUserName(uname);
+		user.setPassword(pword);
+		user.setEmailID(email);
+		entityHandler.signUp(user, activity, SignInActivity.class);
 	}
-
-	private void clearErrors() {
-		mEmailEditText.setError(null);
-		mUserNameEditText.setError(null);
-		mPasswordEditText.setError(null);
-		mConfirmPasswordEditText.setError(null);
-	}
-
-	@SuppressWarnings("deprecation")
-	public void showAlertDialog(Context context, String title, String message,
-			Boolean status) {
-		AlertDialog alertDialog = new AlertDialog.Builder(context).create();
-
-		// Setting Dialog Title
-		alertDialog.setTitle(title);
-
-		// Setting Dialog Message
-		alertDialog.setMessage(message);
-
-		// Setting alert dialog icon
-		alertDialog.setIcon(R.drawable.fail);
-
-		// Setting OK Button
-		alertDialog.setButton("OK", new DialogInterface.OnClickListener() {
-			public void onClick(DialogInterface dialog, int which) {
-			}
-		});
-
-		// Showing Alert Message
-		alertDialog.show();
-	}
-
 }

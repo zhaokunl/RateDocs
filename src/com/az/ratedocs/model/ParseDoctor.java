@@ -1,14 +1,21 @@
 package com.az.ratedocs.model;
 
 import java.util.ArrayList;
+
 import android.app.Activity;
 import android.graphics.Bitmap;
+import android.util.Log;
+
 import com.az.ratedocs.entities.DoctorInterface;
 import com.az.ratedocs.exceptionhandler.WebServiceException;
 import com.az.ratedocs.webservice.PConstants;
 import com.az.ratedocs.webservice.ParseSaveCallback;
+import com.parse.GetCallback;
+import com.parse.GetDataCallback;
 import com.parse.ParseException;
+import com.parse.ParseFile;
 import com.parse.ParseObject;
+import com.parse.ParseQuery;
 import com.parse.ParseUser;
 
 public class ParseDoctor implements DoctorInterface {
@@ -16,14 +23,27 @@ public class ParseDoctor implements DoctorInterface {
 	private ParseObject doctor;
 
 	/* Create a Parse doctor from an existing doctor retrieved from the server */
-	public ParseDoctor(ParseObject doctor) {
-		this.doctor = doctor;
+	public ParseDoctor(String value) {
+		ParseQuery<ParseObject> query = ParseQuery.getQuery(PConstants.PARSE_DOCTOR);
+		query.whereEqualTo("ID", value);
+		query.getFirstInBackground(new GetCallback<ParseObject>() {
+			public void done(ParseObject object, com.parse.ParseException e) {
+				if (object == null) {
+					Log.d("score", "The getFirst request failed.");
+				} else {
+
+					doctor = object;
+				}
+				
+			}
+	    });
 	}
 
-	/* Create an empty parse doctor */
 	public ParseDoctor() {
-		this.doctor = new ParseObject(PConstants.PARSE_DOCTOR);
-		doctor.put("User", ParseUser.getCurrentUser());
+		
+	}
+	public ParseDoctor(ParseObject doctor) {
+		this.doctor = doctor;
 	}
 
 	/* get the title of the doctor */
@@ -70,6 +90,10 @@ public class ParseDoctor implements DoctorInterface {
 
 	public String getPhone() {
 		return doctor.getString(PConstants.PARSE_PHONE);
+	}
+	
+	public ParseFile getPhoto() {
+		return doctor.getParseFile(PConstants.PARSE_PHOTO);
 	}
 
 
@@ -123,7 +147,15 @@ public class ParseDoctor implements DoctorInterface {
 		doctor.put(PConstants.PARSE_EMAIL, comments);
 	}
 
-
+	@Override
+	public void setPhone(String phone) {
+		doctor.put(PConstants.PARSE_PHONE, phone);
+	}
+	
+	public void setPhoto(ParseFile file) {
+		doctor.put(PConstants.PARSE_PHOTO, file);
+	}
+	
 	/* method to save the doctor to the database */
 	public void save(Activity activity) {
 		doctor.saveInBackground(new ParseSaveCallback(activity));
@@ -135,18 +167,6 @@ public class ParseDoctor implements DoctorInterface {
 		} catch (ParseException e) {
 			throw new WebServiceException("Failed to delete doctor");
 		}
-	}
-
-	public Bitmap getBookImage() {
-		return null;
-	}
-
-	public void setBookImage(Bitmap bMap) {
-
-	}
-
-	public void setPhone(String phone) {
-
 	}
 
 	@Override
