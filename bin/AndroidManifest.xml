@@ -42,7 +42,7 @@
         </activity>
         <activity android:name="com.az.ratedocs.DoctorProfileActivity" >
         </activity>
-        <activity android:name="com.az.ratedocs.SignInActivity" >
+        <activity android:name="com.az.ratedocs.MainActivity" >
         </activity>
     </application>
 

@@ -37,12 +37,6 @@ public class ParseHandler implements EntitiesHandler{
 		ParseAnalytics.trackAppOpened(activity.getIntent());
 	}
 
-	/* Log out the currently logged in user */
-	@Override
-	public void logOut() {
-		ParseUser.logOut();
-	}
-
 	/* Attempt to log a user in in the background using a callback */
 	@Override
 	public void logIn(String uname, String pword, Activity activity, Class<?> class1) {

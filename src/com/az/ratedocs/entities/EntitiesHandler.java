@@ -6,7 +6,6 @@ import com.az.ratedocs.exceptionhandler.WebServiceException;
 import android.app.Activity;
 
 public interface EntitiesHandler {
-	public void logOut();
 	public void logIn(String uname, String pword, Activity activity,Class<?> class1);
 	public void signUp(UserInfoInterface user, Activity activity,Class<?> class1);
 	public void resetPassword(String email, Activity activity);

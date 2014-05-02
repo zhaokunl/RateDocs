@@ -24,12 +24,12 @@ import android.widget.Toast;
 import android.widget.RatingBar.OnRatingBarChangeListener;
 
 public class DoctorProfileDisplay extends DisplayHelper {
-	
+
 	private Activity activity;
 	private Context context;
 	private RatingBar ratingBar;
 	private Button comment;
-    private String value;
+	private String value;
 	TextView text5;
 	private String id;
 	private String username;
@@ -40,21 +40,23 @@ public class DoctorProfileDisplay extends DisplayHelper {
 	ParseFile fileObject;
 	ImageView pic;
 	ParseObject doctor;
-	
+	Bitmap bmp;
+
 	public DoctorProfileDisplay(Activity activity, String value) {
 		super(activity);
-		this.activity =activity;
+		this.activity = activity;
 		this.value = value;
-		
-		ParseQuery<ParseObject> query = ParseQuery.getQuery(PConstants.PARSE_DOCTOR);
+
+		ParseQuery<ParseObject> query = ParseQuery
+				.getQuery(PConstants.PARSE_DOCTOR);
 		query.whereEqualTo("ID", value);
-		
+
 		query.getFirstInBackground(new GetCallback<ParseObject>() {
 			public void done(ParseObject object, com.parse.ParseException e) {
 				if (object == null) {
 					Log.d("score", "The getFirst request failed.");
 				} else {
-                    Log.d("doctor constructor", "true");
+					Log.d("doctor constructor", "true");
 					doctor = object;
 					display();
 					getTotalRating();
@@ -62,13 +64,18 @@ public class DoctorProfileDisplay extends DisplayHelper {
 					username = object.getString("name");
 				}
 			}
-	    });
-		
-		if (doctor==null) Log.d("doctor is :        ", "empty");
+		});
 	}
-	
+
 	/* this method is used to display all the auto-generated views */
 	public void display() {
+		Runtime.getRuntime().gc();
+		if (bmp != null && !bmp.isRecycled()) {
+			bmp.recycle();
+			bmp = null;
+		}
+		System.gc();
+
 		ParseDoctor object = new ParseDoctor(doctor);
 		Log.d("activity is whwat", activity.getClass().getName());
 		text1 = (TextView) activity.findViewById(R.id.textView1);
@@ -80,23 +87,33 @@ public class DoctorProfileDisplay extends DisplayHelper {
 		text4 = (TextView) activity.findViewById(R.id.textView4);
 		text4.setText(object.getAddress());
 
-		fileObject = (ParseFile) object.getPhoto();
-		fileObject.getDataInBackground(new GetDataCallback() {
-			@Override
-			public void done(byte[] data, com.parse.ParseException e) {
+		try {
+			fileObject = (ParseFile) object.getPhoto();
+			fileObject.getDataInBackground(new GetDataCallback() {
 
-				if (e == null) {
-					Bitmap bmp = BitmapFactory.decodeByteArray(data, 0,
-							data.length);
+				@Override
+				public void done(byte[] data, com.parse.ParseException e) {
 
-					pic = (ImageView) activity.findViewById(R.id.image);
-					pic.setImageBitmap(bmp);
-				} else {
-					Toast.makeText(activity.getApplicationContext(),
-							e.getMessage(), Toast.LENGTH_LONG).show();
+					if (e == null) {
+						try{
+						bmp = BitmapFactory.decodeByteArray(data, 0,
+								data.length);
+						}catch (OutOfMemoryError error){
+							
+						}
+
+						pic = (ImageView) activity.findViewById(R.id.image);
+						pic.setImageBitmap(bmp);
+
+					} else {
+						Toast.makeText(activity.getApplicationContext(),
+								e.getMessage(), Toast.LENGTH_LONG).show();
+					}
 				}
-			}
-		});
+			});
+		} catch (Exception e) {
+
+		}
 
 		ratingBar = (RatingBar) activity.findViewById(R.id.ratingBar1);
 		// Set ChangeListener to Rating Bar
@@ -116,14 +133,13 @@ public class DoctorProfileDisplay extends DisplayHelper {
 			}
 		});
 	}
-	
-	
+
 	public void getTotalRating() {
 		ParseQuery<ParseObject> query = ParseQuery.getQuery("ratings");
 		query.whereEqualTo("doctorID", value);
 
 		query.findInBackground(new FindCallback<ParseObject>() {
-			
+
 			public void done(List<ParseObject> ratinglist,
 					com.parse.ParseException e) {
 				if (e == null) {
@@ -132,11 +148,11 @@ public class DoctorProfileDisplay extends DisplayHelper {
 
 					for (ParseObject d : ratinglist) {
 						double rating = d.getDouble("rating");
-						if(rating > 0) {
+						if (rating > 0) {
 							scores.add(rating);
 						}
 						String comment = d.getString("comment");
-						if(comment != null && comment.trim().length() > 0) {
+						if (comment != null && comment.trim().length() > 0) {
 							comments.add(comment);
 						}
 					}
@@ -146,10 +162,11 @@ public class DoctorProfileDisplay extends DisplayHelper {
 						sum += scores.get(i);
 					}
 
-					String averageRating = String.format("%.2f", sum / scores.size());
+					String averageRating = String.format("%.2f",
+							sum / scores.size());
 					text5 = (TextView) activity.findViewById(R.id.textView5);
 					text5.setText(averageRating);
-					
+
 				} else {
 					Log.d("rating", "The getRatings request failed.");
 				}

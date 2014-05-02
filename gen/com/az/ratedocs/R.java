@@ -996,7 +996,8 @@ containing a value of this type.
         public static final int fail=0x7f020059;
         public static final int ic_launcher=0x7f02005a;
         public static final int ic_launcher1=0x7f02005b;
-        public static final int welcome=0x7f02005c;
+        public static final int noimage=0x7f02005c;
+        public static final int welcome=0x7f02005d;
     }
     public static final class id {
         public static final int action_bar=0x7f05001c;
@@ -1015,22 +1016,22 @@ containing a value of this type.
         public static final int always=0x7f05000b;
         public static final int beginning=0x7f050011;
         public static final int btnCreateAccount=0x7f050045;
-        public static final int btn_ForgetPass=0x7f05006e;
-        public static final int btn_login=0x7f05006c;
-        public static final int btn_signup=0x7f05006d;
-        public static final int btn_skip=0x7f05006f;
+        public static final int btn_ForgetPass=0x7f050064;
+        public static final int btn_login=0x7f050062;
+        public static final int btn_signup=0x7f050063;
+        public static final int btn_skip=0x7f050065;
         public static final int btn_submitforgetpassword=0x7f05005e;
         public static final int button=0x7f05003f;
-        public static final int button1=0x7f05005f;
-        public static final int button10=0x7f050068;
-        public static final int button2=0x7f050060;
-        public static final int button3=0x7f050061;
-        public static final int button4=0x7f050062;
-        public static final int button5=0x7f050063;
-        public static final int button6=0x7f050064;
-        public static final int button7=0x7f050065;
-        public static final int button8=0x7f050066;
-        public static final int button9=0x7f050067;
+        public static final int button_all=0x7f050066;
+        public static final int button_cardiology=0x7f050067;
+        public static final int button_dentistry=0x7f050068;
+        public static final int button_dermatology=0x7f050069;
+        public static final int button_fm=0x7f05006a;
+        public static final int button_gs=0x7f05006b;
+        public static final int button_nephrology=0x7f05006c;
+        public static final int button_neurology=0x7f05006d;
+        public static final int button_og=0x7f05006e;
+        public static final int button_oncology=0x7f05006f;
         public static final int call=0x7f050055;
         public static final int checkbox=0x7f05002d;
         public static final int collapseActionView=0x7f05000d;
@@ -1060,15 +1061,15 @@ containing a value of this type.
         public static final int listMode=0x7f050001;
         public static final int listView1=0x7f050040;
         public static final int list_item=0x7f050029;
-        public static final int login=0x7f05006b;
+        public static final int login=0x7f050061;
         public static final int menu_forgot_password=0x7f050070;
         public static final int middle=0x7f050012;
         public static final int name=0x7f05004d;
         public static final int never=0x7f050009;
         public static final int none=0x7f050010;
         public static final int normal=0x7f050000;
-        public static final int orTV=0x7f050069;
-        public static final int password=0x7f05006a;
+        public static final int orTV=0x7f05005f;
+        public static final int password=0x7f050060;
         public static final int phone=0x7f05004f;
         public static final int progress_circular=0x7f050018;
         public static final int progress_horizontal=0x7f050019;
@@ -1173,8 +1174,7 @@ containing a value of this type.
         public static final int activity_fragment_main=0x7f03001e;
         public static final int activity_main=0x7f03001f;
         public static final int activity_select_speciality=0x7f030020;
-        public static final int activity_sign_in=0x7f030021;
-        public static final int support_simple_spinner_dropdown_item=0x7f030022;
+        public static final int support_simple_spinner_dropdown_item=0x7f030021;
     }
     public static final class menu {
         public static final int activity_login=0x7f0d0000;

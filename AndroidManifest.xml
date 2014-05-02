@@ -42,8 +42,6 @@
         </activity>
         <activity android:name="com.az.ratedocs.DoctorProfileActivity" >
         </activity>
-        <activity android:name="com.az.ratedocs.SignInActivity" >
-        </activity>
     </application>
 
 </manifest>

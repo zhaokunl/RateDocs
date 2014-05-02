@@ -2,17 +2,13 @@ package com.az.ratedocs.onclick;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
-import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import com.az.ratedocs.ForgetPasswordActivity;
 import com.az.ratedocs.R;
 import com.az.ratedocs.SelectSpecialityActivity;
-import com.az.ratedocs.SignInActivity;
 import com.az.ratedocs.entities.EntitiesHandler;
 import com.az.ratedocs.entities.HandlerFactory;
 import com.az.ratedocs.entities.UserInfoInterface;

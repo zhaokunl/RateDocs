@@ -1,19 +1,85 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@drawable/welcome" >
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/LoginFormContainer"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@drawable/background"
+    android:orientation="vertical" >
+
+    <TextView
+        android:id="@+id/orTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:maxLines="1"
+        android:singleLine="true"
+        android:text="@string/orTitle"
+        android:textColor="@color/white"
+        android:textSize="20dp" />
+
+    <EditText
+        android:id="@+id/username"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/usernameHint"
+        android:maxLines="1"
+        android:singleLine="true"
+        android:textColor="@color/white"
+        android:textSize="25sp" />
+
+    <EditText
+        android:id="@+id/password"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/prompt_password"
+        android:imeActionId="@+id/login"
+        android:imeActionLabel="@string/action_sign_in_short"
+        android:imeOptions="actionUnspecified"
+        android:inputType="textPassword"
+        android:maxLines="1"
+        android:singleLine="true"
+        android:textColor="@color/white"
+        android:textSize="25sp" />
 
     <Button
-        android:id="@+id/button"
-        android:layout_width="200sp"
-        android:layout_height="150sp"
-        android:layout_alignParentRight="true"
-        android:layout_centerVertical="true"
-        android:layout_marginRight="97dp"
-        android:background="@drawable/button"
-        android:text="Start"
-        android:textColor="@color/white"
-        android:textSize="36sp" />
+        android:id="@+id/btn_login"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="16dp"
+        android:text="@string/action_sign_in_short"
+        android:textColor="@color/white" />
 
-</RelativeLayout>
+    <TextView
+        android:id="@+id/orTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="16dp"
+        android:text="@string/orText"
+        android:textColor="@color/white"
+        android:textSize="15sp" />
+
+    <Button
+        android:id="@+id/btn_signup"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/action_register"
+        android:textColor="@color/white" />
+
+    <Button
+        android:id="@+id/btn_ForgetPass"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="Forgot Password"
+        android:textColor="@color/white" />
+    
+    <Button
+        android:id="@+id/btn_skip"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="Skip"
+        android:textColor="@color/white" />
+
+</LinearLayout>
