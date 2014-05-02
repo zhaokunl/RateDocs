@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+
 import com.az.ratedocs.DoctListActivity;
 import com.az.ratedocs.R;
 
@@ -61,78 +62,57 @@ public class OnClickSpeciality implements OnClickInterface, View.OnClickListener
 			name = extras.getString("username");
 		}
 		
-		switch (v.getId()) {
-		case R.id.button1: {
+		if (v.getId() == R.id.button1) {
 			Log.d("entered button 1 branch", "true");
 			Intent i1 = new Intent(context, DoctListActivity.class);
 			i1.putExtra("string", "All");
 			i1.putExtra("username", name);
 			activity.startActivity(i1);
-			break;
-		}
-		case R.id.button2: {
+		} else if (v.getId() == R.id.button2) {
 			Intent i1 = new Intent(context, DoctListActivity.class);
 			i1.putExtra("string", "Cardiology");
 			i1.putExtra("username", name);
 			activity.startActivity(i1);
-			break;
-		}
-		case R.id.button3: {
+		} else if (v.getId() == R.id.button3) {
 			Intent i1 = new Intent(context, DoctListActivity.class);
 			i1.putExtra("string", "Dentistry");
 			i1.putExtra("username", name);
 			activity.startActivity(i1);
-			break;
-		}
-		case R.id.button4: {
+		} else if (v.getId() == R.id.button4) {
 			Intent i1 = new Intent(context, DoctListActivity.class);
 			i1.putExtra("string", "Dermatology");
 			i1.putExtra("username", name);
 			activity.startActivity(i1);
-			break;
-		}
-		case R.id.button5: {
+		} else if (v.getId() == R.id.button5) {
 			Intent i1 = new Intent(context, DoctListActivity.class);
 			i1.putExtra("string", "Family Medicine");
 			i1.putExtra("username", name);
 			activity.startActivity(i1);
-			break;
-		}
-		case R.id.button6: {
+		} else if (v.getId() == R.id.button6) {
 			Intent i1 = new Intent(context, DoctListActivity.class);
 			i1.putExtra("string", "General Surgery");
 			i1.putExtra("username", name);
 			activity.startActivity(i1);
-			break;
-		}
-		case R.id.button7: {
+		} else if (v.getId() == R.id.button7) {
 			Intent i1 = new Intent(context, DoctListActivity.class);
 			i1.putExtra("string", "Nephrology");
 			i1.putExtra("username", name);
 			activity.startActivity(i1);
-			break;
-		}
-		case R.id.button8: {
+		} else if (v.getId() == R.id.button8) {
 			Intent i1 = new Intent(context, DoctListActivity.class);
 			i1.putExtra("string", "Neurology");
 			i1.putExtra("username", name);
 			activity.startActivity(i1);
-			break;
-		}
-		case R.id.button9: {
+		} else if (v.getId() == R.id.button9) {
 			Intent i1 = new Intent(context, DoctListActivity.class);
 			i1.putExtra("string", "Obstetrics and Gynecology");
 			i1.putExtra("username", name);
 			activity.startActivity(i1);
-			break;
-		}
-		case R.id.button10: {
+		} else if (v.getId() == R.id.button10) {
 			Intent i1 = new Intent(context, DoctListActivity.class);
 			i1.putExtra("string", "Oncology");
 			i1.putExtra("username", name);
 			activity.startActivity(i1);
-			break;
-		}
 		}
 	}
 }

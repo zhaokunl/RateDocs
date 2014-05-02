@@ -16,6 +16,7 @@ import com.az.ratedocs.R;
 import com.parse.FindCallback;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
+import com.parse.ParseUser;
 
 public class OnClickAddComments implements OnClickInterface {
 
@@ -65,7 +66,8 @@ public class OnClickAddComments implements OnClickInterface {
 			name = extras.getString("username");
 		}
 
-		username = name;
+		username = ParseUser.getCurrentUser().getUsername();
+//		username = name;
 		id = doc_id;
 
 		ParseQuery<ParseObject> query = ParseQuery.getQuery("ratings");
@@ -79,8 +81,11 @@ public class OnClickAddComments implements OnClickInterface {
 					ArrayList<String> comments = new ArrayList<String>();
 
 					for (ParseObject d : commentsList) {
-						usernames.add(d.getString("username"));
-						comments.add(d.getString("comment"));
+						String commentString = d.getString("comment");
+						if(commentString != null && commentString.trim().length() > 0) {
+							usernames.add(d.getString("username"));
+							comments.add(commentString);
+						}
 					}
 
 					number = usernames.size();

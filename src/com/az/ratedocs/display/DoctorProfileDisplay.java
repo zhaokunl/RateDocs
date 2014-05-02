@@ -131,8 +131,14 @@ public class DoctorProfileDisplay extends DisplayHelper {
 					ArrayList<String> comments = new ArrayList<String>();
 
 					for (ParseObject d : ratinglist) {
-						scores.add(d.getDouble("rating"));
-						comments.add(d.getString("comment"));
+						double rating = d.getDouble("rating");
+						if(rating > 0) {
+							scores.add(rating);
+						}
+						String comment = d.getString("comment");
+						if(comment != null && comment.trim().length() > 0) {
+							comments.add(comment);
+						}
 					}
 
 					double sum = 0.0;

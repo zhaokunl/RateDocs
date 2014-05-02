@@ -1,6 +1,8 @@
 package com.az.ratedocs.onclick;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 import android.app.Activity;
@@ -111,6 +113,22 @@ public class OnClickDoctorList implements OnClickInterface {
 						map.put("phone", myDocPhone[i]);
 						mylist.add(map);
 					}
+					
+					Collections.sort(mylist, new Comparator<HashMap<String, String>>() {
+						@Override
+						public int compare(HashMap<String, String> a, HashMap<String, String> b) {
+							double dist1 = Double.parseDouble(a.get("distance"));
+							double dist2 = Double.parseDouble(b.get("distance"));
+							double delta = dist1 - dist2;
+							if(delta == 0) {
+								return 0;
+							} else if(delta < 0) {
+								return -1;
+							} else {
+								return 1;
+							}
+						}
+					});
 
 					SimpleAdapter adapter = new SimpleAdapter(context, mylist,
 							R.layout.activity_doctor_list, new String[] {

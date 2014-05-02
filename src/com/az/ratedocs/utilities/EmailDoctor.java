@@ -115,14 +115,10 @@ public class EmailDoctor implements OnItemSelectedListener{
 	@Override
 	public void onItemSelected(AdapterView<?> arg0, View arg1, int pos,
 			long arg3) {
-		switch (arg0.getId()) {
-		case R.id.spinner1:
+		if (arg0.getId() == R.id.spinner1) {
 			selected_month = arg0.getItemAtPosition(pos).toString();
-
-			break;
-		case R.id.spinner2:
+		} else if (arg0.getId() == R.id.spinner2) {
 			selected_day = arg0.getItemAtPosition(pos).toString();
-			break;
 		}
 	}
 
