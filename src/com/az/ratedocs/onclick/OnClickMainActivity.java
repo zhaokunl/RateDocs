@@ -26,7 +26,6 @@ public class OnClickMainActivity implements OnClickInterface {
 		EntitiesHandler entitiesHandler = HandlerFactory.getHandler(activity);
 		try {
 			entitiesHandler.getCurrentUser();
-			StartIntent.startIntent(activity, MainActivity.class);
 		} catch (WebServiceException e) {
 			/* Do nothing */
 		}

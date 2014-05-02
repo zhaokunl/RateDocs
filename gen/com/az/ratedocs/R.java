@@ -997,7 +997,6 @@ containing a value of this type.
         public static final int ic_launcher=0x7f02005a;
         public static final int ic_launcher1=0x7f02005b;
         public static final int noimage=0x7f02005c;
-        public static final int welcome=0x7f02005d;
     }
     public static final class id {
         public static final int action_bar=0x7f05001c;

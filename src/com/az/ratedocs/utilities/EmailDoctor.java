@@ -14,7 +14,6 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
-
 import com.az.ratedocs.R;
 import com.az.ratedocs.model.ParseDoctor;
 import com.az.ratedocs.webservice.PConstants;
