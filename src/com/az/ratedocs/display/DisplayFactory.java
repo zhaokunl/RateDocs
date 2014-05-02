@@ -10,7 +10,7 @@ public class DisplayFactory {
 		DisplayHelper dh;
 		
 		/* Determine the class for which the display function should be called and then display elements in the view*/
-		if(class1 == DoctorProfileActivity .class) {
+		if(class1 == DoctorProfileActivity.class) {
 			dh = new DoctorProfileDisplay(activity, value);
 		}  else {
 			dh = null;

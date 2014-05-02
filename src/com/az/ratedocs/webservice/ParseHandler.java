@@ -4,8 +4,12 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
+
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.os.StrictMode;
+import android.util.Log;
+
 import com.az.ratedocs.entities.DoctorInterface;
 import com.az.ratedocs.entities.EntitiesHandler;
 import com.az.ratedocs.entities.UserInfoInterface;
@@ -21,12 +25,19 @@ import com.parse.ParseUser;
 
 public class ParseHandler implements EntitiesHandler{
 	private static DoctorInterface currentDoctor;
-	private static ArrayList<DoctorInterface> currentBookList;
+	private static ArrayList<DoctorInterface> currentDoctorList;
 
 	public ParseHandler() {
+		Log.d("empty handler", "instead");
 	}
 	
+	@SuppressLint("NewApi")
 	public ParseHandler(Activity activity){
+		Log.d("we're here", "true");
+		
+		StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+		StrictMode.setThreadPolicy(policy);
+		
 		Parse.initialize(activity, PConstants.APPLICATION_ID, PConstants.CLIENT_KEY);
 		ParseAnalytics.trackAppOpened(activity.getIntent());
 	}
@@ -40,6 +51,7 @@ public class ParseHandler implements EntitiesHandler{
 	/* Attempt to log a user in in the background using a callback */
 	@Override
 	public void logIn(String uname, String pword, Activity activity, Class<?> class1) {
+		Log.d("login in parsehandler", "true");
 		ParseUser.logInInBackground(uname, pword,  new ParseLoginCallback(activity, class1));
 	}
 
@@ -60,7 +72,7 @@ public class ParseHandler implements EntitiesHandler{
 		ParseUser.requestPasswordResetInBackground(email, new ParseRequestPasswordResetCallback(activity));
 	}
 
-	/* Return a new empty book object */
+	/* Return a new empty Doctor object */
 	@Override
 	public DoctorInterface getDoctor() {
 		return new ParseDoctor();
@@ -106,35 +118,35 @@ public class ParseHandler implements EntitiesHandler{
 
 		/* Search for all of the queries in the query list */
 		query = ParseQuery.or(queries);
-		ArrayList<DoctorInterface> booklist = new ArrayList<DoctorInterface>();
+		ArrayList<DoctorInterface> Doctorlist = new ArrayList<DoctorInterface>();
 		try {
-			/* Retrieve the search results and convert them from parseobjects to book objects */
+			/* Retrieve the search results and convert them from parseobjects to Doctor objects */
 			List<ParseObject> list = query.find();
 			Iterator<ParseObject> iter = list.iterator();
 			while(iter.hasNext()) {
-				booklist.add(new ParseDoctor(iter.next()));
+				Doctorlist.add(new ParseDoctor(iter.next()));
 			}
 			
-			/* Set the current book list to the search results */
-			currentBookList = booklist;
+			/* Set the current Doctor list to the search results */
+			currentDoctorList = Doctorlist;
 		} catch (ParseException e) {
 			throw new WebServiceException("Search Failed");
 		}
 	}
 
-	/* Get the currently saved book */
+	/* Get the currently saved doctor */
 	@Override
-	public DoctorInterface getCurrentBook(Activity activity) {
+	public DoctorInterface getCurrentDoctor(Activity activity) {
 		return currentDoctor;
 	}
 	
-	/* Get the currently saved book list */
+	/* Get the currently saved Doctor list */
 	@Override
 	public ArrayList<DoctorInterface> getCurrentList(Activity activity) {
-		return currentBookList;
+		return currentDoctorList;
 	}
 
-	/* Set the saved took to the supplied book */
+	/* Set the saved took to the supplied Doctor */
 	@Override
 	public void setCurrentDoctor(DoctorInterface doc) {
 		currentDoctor = doc;
@@ -154,13 +166,13 @@ public class ParseHandler implements EntitiesHandler{
 				throw new WebServiceException("You don not have any ratings");
 			} else {
 				Iterator<ParseObject> iter = ratinglist.iterator();
-				currentBookList = new ArrayList<DoctorInterface>();
+				currentDoctorList = new ArrayList<DoctorInterface>();
 				while(iter.hasNext()) {
-					currentBookList.add(new ParseDoctor(iter.next()));
+					currentDoctorList.add(new ParseDoctor(iter.next()));
 				}
 			}
 		} catch (ParseException e) {
-			throw new WebServiceException("Could retrieve book list");
+			throw new WebServiceException("Could retrieve Doctor list");
 		}
     }
 }

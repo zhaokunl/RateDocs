@@ -90,7 +90,8 @@ public class OnClickDoctorList implements OnClickInterface {
 						double a = latitudes.get(i);
 						double b = longitudes.get(i);
 
-						myDocDistance[i] = CalculateDistance.calculateLocation(a, b);
+						CalculateDistance cal = new CalculateDistance(activity, context);
+						myDocDistance[i] = cal.calculateLocation(a, b);
 					}
 
 					String[] myDocPhone = new String[names.size()];

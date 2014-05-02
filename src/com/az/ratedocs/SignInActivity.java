@@ -1,14 +1,20 @@
 package com.az.ratedocs;
 
 import android.app.Activity;
+import android.content.pm.ActivityInfo;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.view.Menu;
-import android.view.MenuItem;
+
 import com.az.ratedocs.onclick.OnClickFactory;
 import com.az.ratedocs.onclick.OnClickInterface;
+import com.az.ratedocs.webservice.PConstants;
+import com.parse.Parse;
+import com.parse.ParseAnalytics;
 
 public class SignInActivity extends Activity {
-
+	
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -19,20 +25,15 @@ public class SignInActivity extends Activity {
 	}
 	
 	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-	    super.onCreateOptionsMenu(menu);
-		getMenuInflater().inflate(R.menu.activity_login, menu);
-		return true;
+	public void onConfigurationChanged(Configuration newConfig) {
+	    super.onConfigurationChanged(newConfig);
+	    setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 	}
 
 	@Override
-	public boolean onOptionsItemSelected(MenuItem item) {
-		// Handle item selection
-		switch (item.getItemId()) {
-		case R.id.menu_forgot_password:
-			return true;
-		default:
-			return super.onOptionsItemSelected(item);
-		}
+	public boolean onCreateOptionsMenu(Menu menu) {
+		// Inflate the menu; this adds items to the action bar if it is present.
+		getMenuInflater().inflate(R.menu.main, menu);
+		return true;
 	}
 }

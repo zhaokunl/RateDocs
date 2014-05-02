@@ -1,6 +1,8 @@
 package com.az.ratedocs.model;
 
 import android.app.Activity;
+import android.util.Log;
+
 import com.az.ratedocs.entities.UserInfoInterface;
 import com.az.ratedocs.webservice.PConstants;
 import com.az.ratedocs.webservice.ParseSignUpCallback;
@@ -49,6 +51,7 @@ public class ParseInfoUser implements UserInfoInterface {
 
 	@Override
 	public void signUp(Activity activity, Class<?> class1) {
+		Log.d("oooooooooooooo","ok");
 		user.signUpInBackground(new ParseSignUpCallback(activity, class1));
 	}
 }

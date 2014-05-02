@@ -1,7 +1,9 @@
 package com.az.ratedocs.webservice;
 
 import android.app.Activity;
+import android.util.Log;
 import android.widget.Toast;
+
 import com.az.ratedocs.utilities.StartIntent;
 import com.parse.LogInCallback;
 import com.parse.ParseException;
@@ -13,6 +15,7 @@ public class ParseLoginCallback extends LogInCallback {
 	private Class<?> class1;
 
 	public ParseLoginCallback(Activity activity, Class<?> class1){
+		Log.d("logincallback", "true");
 		this.activity = activity;
 		this.class1 = class1;
 	}

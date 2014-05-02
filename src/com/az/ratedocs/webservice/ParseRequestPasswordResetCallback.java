@@ -29,5 +29,4 @@ RequestPasswordResetCallback {
 						Toast.LENGTH_SHORT).show();
 		}
 	}
-
 }

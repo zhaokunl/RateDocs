@@ -2,11 +2,13 @@ package com.az.ratedocs.onclick;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import com.az.ratedocs.R;
 import com.az.ratedocs.SignInActivity;
 import com.az.ratedocs.entities.EntitiesHandler;
@@ -23,7 +25,7 @@ public class OnClickCreateAccount implements OnClickInterface {
 	public OnClickCreateAccount(Activity a) {
 		this.activity = a;
 		Button button = (Button) activity
-				.findViewById(R.id.btn_signup);
+				.findViewById(R.id.btnCreateAccount);
 		button.setOnClickListener(new OnClickListener() {
 
 			@Override
@@ -83,6 +85,8 @@ public class OnClickCreateAccount implements OnClickInterface {
 		user.setUserName(uname);
 		user.setPassword(pword);
 		user.setEmailID(email);
-		entityHandler.signUp(user, activity, SignInActivity.class);
+		
+		Log.d("before signup", "once?");
+		//entityHandler.signUp(user, activity, SignInActivity.class);
 	}
 }

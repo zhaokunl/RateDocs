@@ -1,11 +1,16 @@
 package com.az.ratedocs.onclick;
 
 import com.az.ratedocs.CommentActivity;
+import com.az.ratedocs.DoctorProfileActivity;
 import com.az.ratedocs.R;
+import com.az.ratedocs.display.DisplayFactory;
+import com.az.ratedocs.display.DisplayHelper;
+
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
@@ -29,7 +34,13 @@ public class OnClickDoctorProfile implements OnClickInterface {
 			value = extras.getString("id");
 			name = extras.getString("username");
 		}
-
+		
+		Log.d("value equals to :", value);
+		
+		
+		DisplayHelper bd = DisplayFactory.getDisplayHelper(activity, value);
+		//bd.display();
+		
 		id = value;
 		username = name;
 		

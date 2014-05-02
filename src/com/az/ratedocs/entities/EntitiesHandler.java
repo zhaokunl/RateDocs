@@ -14,7 +14,7 @@ public interface EntitiesHandler {
 	public DoctorInterface getDoctor();
 	public UserInfoInterface getUser();
 	public UserInfoInterface getCurrentUser() throws WebServiceException;
-	public DoctorInterface getCurrentBook(Activity activity);
+	public DoctorInterface getCurrentDoctor(Activity activity);
 	void query(String title, Activity activity, HashMap<String, String> advSearch) throws WebServiceException;
 	public ArrayList<DoctorInterface> getCurrentList(Activity activity);
 	public void getRatings(Activity activity) throws WebServiceException;

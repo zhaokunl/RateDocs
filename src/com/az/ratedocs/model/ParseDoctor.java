@@ -24,14 +24,19 @@ public class ParseDoctor implements DoctorInterface {
 
 	/* Create a Parse doctor from an existing doctor retrieved from the server */
 	public ParseDoctor(String value) {
+		Log.d("parse doctor", "yep");
 		ParseQuery<ParseObject> query = ParseQuery.getQuery(PConstants.PARSE_DOCTOR);
 		query.whereEqualTo("ID", value);
+		
 		query.getFirstInBackground(new GetCallback<ParseObject>() {
 			public void done(ParseObject object, com.parse.ParseException e) {
+				Log.d("oh", "ueeeefsasdfasgfsadfjhkashj");
+				
+				
 				if (object == null) {
 					Log.d("score", "The getFirst request failed.");
 				} else {
-
+                    Log.d("doctor constructor", "true");
 					doctor = object;
 				}
 				
@@ -42,6 +47,7 @@ public class ParseDoctor implements DoctorInterface {
 	public ParseDoctor() {
 		
 	}
+	
 	public ParseDoctor(ParseObject doctor) {
 		this.doctor = doctor;
 	}
@@ -55,7 +61,8 @@ public class ParseDoctor implements DoctorInterface {
 	/* get the author name of the doctor */
 	@Override
 	public String getName() {
-		return doctor.getString(PConstants.PARSE_NAME);
+		if (doctor == null) return "oh";
+		else return doctor.getString(PConstants.PARSE_NAME);
 	}
 
 	/* get the ISBN of the doctor */
