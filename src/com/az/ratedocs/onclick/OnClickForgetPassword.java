@@ -23,7 +23,6 @@ public class OnClickForgetPassword implements OnClickInterface{
 			public void onClick(View arg0) {
 				clickedRecoverPassword();
 			}
-			
 		});
 	}
 

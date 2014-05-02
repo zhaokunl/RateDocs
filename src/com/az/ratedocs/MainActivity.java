@@ -2,9 +2,6 @@ package com.az.ratedocs;
 
 import com.az.ratedocs.onclick.OnClickFactory;
 import com.az.ratedocs.onclick.OnClickInterface;
-import com.az.ratedocs.webservice.PConstants;
-import com.parse.Parse;
-import com.parse.ParseAnalytics;
 
 import android.app.Activity;
 import android.os.Bundle;

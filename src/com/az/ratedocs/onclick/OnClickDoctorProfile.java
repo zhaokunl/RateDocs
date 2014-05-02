@@ -1,18 +1,17 @@
 package com.az.ratedocs.onclick;
 
-import com.az.ratedocs.CommentActivity;
-import com.az.ratedocs.DoctorProfileActivity;
-import com.az.ratedocs.R;
-import com.az.ratedocs.display.DisplayFactory;
-import com.az.ratedocs.display.DisplayHelper;
-
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import com.az.ratedocs.CommentActivity;
+import com.az.ratedocs.R;
+import com.az.ratedocs.display.DisplayFactory;
+import com.az.ratedocs.display.DisplayHelper;
+import com.az.ratedocs.utilities.CallDoctor;
+import com.az.ratedocs.utilities.EmailDoctor;
 
 public class OnClickDoctorProfile implements OnClickInterface {
 	private Activity activity;
@@ -35,11 +34,9 @@ public class OnClickDoctorProfile implements OnClickInterface {
 			name = extras.getString("username");
 		}
 		
-		Log.d("value equals to :", value);
-		
-		
 		DisplayHelper bd = DisplayFactory.getDisplayHelper(activity, value);
-		//bd.display();
+		CallDoctor call = new CallDoctor(activity, value);
+		EmailDoctor email = new EmailDoctor(activity, context, value);
 		
 		id = value;
 		username = name;

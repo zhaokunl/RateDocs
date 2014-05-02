@@ -8,9 +8,7 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.az.ratedocs.R;
-import com.az.ratedocs.SignInActivity;
 import com.az.ratedocs.entities.EntitiesHandler;
 import com.az.ratedocs.entities.HandlerFactory;
 import com.az.ratedocs.entities.UserInfoInterface;
@@ -21,7 +19,6 @@ public class OnClickCreateAccount implements OnClickInterface {
 
 	private Activity activity;
 
-	/* associate the on click methods with the buttons */
 	public OnClickCreateAccount(Activity a) {
 		this.activity = a;
 		Button button = (Button) activity
@@ -44,12 +41,10 @@ public class OnClickCreateAccount implements OnClickInterface {
 		});
 	}
 
-	/* Attempt to register the user */
 	@SuppressLint("NewApi")
 	public void clickedRegister() throws PasswordMatchException,
 			IncompleteFieldException {
 
-		/* Grab the information from the edit texts */
 		String name = ((TextView) activity
 				.findViewById(R.id.etUsername)).getText()
 				.toString();
@@ -65,28 +60,19 @@ public class OnClickCreateAccount implements OnClickInterface {
 				.findViewById(R.id.etPasswordConfirm)).getText()
 				.toString();
 
-		/*
-		 * If the password does not match the confirmation password throw an
-		 * exception
-		 */
 		if (!pword.equals(cpword))
 			throw new PasswordMatchException("Passwords must match");
 
-		/* If the user has not filled in every field throw an exception */
 		if (name.isEmpty() || email.isEmpty() || uname.isEmpty()
 				|| pword.isEmpty())
 			throw new IncompleteFieldException("Please fill in all fields");
 
-		/* get a blank user from the entities handler */
 		EntitiesHandler entityHandler = HandlerFactory.getHandler(activity);
 		UserInfoInterface user = entityHandler.getUser();
 
-		/* Give the user the new credentials and attempt to register them */
 		user.setUserName(uname);
 		user.setPassword(pword);
 		user.setEmailID(email);
-		
-		Log.d("before signup", "once?");
 		//entityHandler.signUp(user, activity, SignInActivity.class);
 	}
 }

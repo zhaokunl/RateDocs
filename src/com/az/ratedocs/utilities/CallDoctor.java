@@ -34,6 +34,5 @@ public class CallDoctor {
 				activity.startActivity(Contact);
 			}
 		});
-
 	}
 }

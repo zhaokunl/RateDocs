@@ -1,17 +1,16 @@
 package com.az.ratedocs.display;
 
+import java.util.ArrayList;
+import java.util.List;
 import com.az.ratedocs.R;
 import com.az.ratedocs.model.ParseDoctor;
-import com.az.ratedocs.model.ParseRating;
 import com.az.ratedocs.webservice.PConstants;
+import com.parse.FindCallback;
 import com.parse.GetCallback;
 import com.parse.GetDataCallback;
-import com.parse.Parse;
-import com.parse.ParseAnalytics;
 import com.parse.ParseFile;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
-
 import android.app.Activity;
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -31,7 +30,7 @@ public class DoctorProfileDisplay extends DisplayHelper {
 	private RatingBar ratingBar;
 	private Button comment;
     private String value;
-	private TextView text5;
+	TextView text5;
 	private String id;
 	private String username;
 	TextView text1;
@@ -52,15 +51,15 @@ public class DoctorProfileDisplay extends DisplayHelper {
 		
 		query.getFirstInBackground(new GetCallback<ParseObject>() {
 			public void done(ParseObject object, com.parse.ParseException e) {
-				Log.d("oh", "ueeeefsasdfasgfsadfjhkashj");
-				
-				
 				if (object == null) {
 					Log.d("score", "The getFirst request failed.");
 				} else {
                     Log.d("doctor constructor", "true");
 					doctor = object;
 					display();
+					getTotalRating();
+					id = object.getString("ID");
+					username = object.getString("name");
 				}
 			}
 	    });
@@ -99,10 +98,6 @@ public class DoctorProfileDisplay extends DisplayHelper {
 			}
 		});
 
-		text5 = (TextView) activity.findViewById(R.id.textView5);
-		ParseRating r = new ParseRating(id);
-		text5.setText(r.getTotalRating(id));
-
 		ratingBar = (RatingBar) activity.findViewById(R.id.ratingBar1);
 		// Set ChangeListener to Rating Bar
 		ratingBar.setOnRatingBarChangeListener(new OnRatingBarChangeListener() {
@@ -118,6 +113,40 @@ public class DoctorProfileDisplay extends DisplayHelper {
 				Toast.makeText(activity.getApplicationContext(),
 						"Your Selected Ratings  : " + String.valueOf(rating),
 						Toast.LENGTH_LONG).show();
+			}
+		});
+	}
+	
+	
+	public void getTotalRating() {
+		ParseQuery<ParseObject> query = ParseQuery.getQuery("ratings");
+		query.whereEqualTo("doctorID", value);
+
+		query.findInBackground(new FindCallback<ParseObject>() {
+			
+			public void done(List<ParseObject> ratinglist,
+					com.parse.ParseException e) {
+				if (e == null) {
+					ArrayList<Double> scores = new ArrayList<Double>();
+					ArrayList<String> comments = new ArrayList<String>();
+
+					for (ParseObject d : ratinglist) {
+						scores.add(d.getDouble("rating"));
+						comments.add(d.getString("comment"));
+					}
+
+					double sum = 0.0;
+					for (int i = 0; i < scores.size(); i++) {
+						sum += scores.get(i);
+					}
+
+					String averageRating = String.format("%.2f", sum / scores.size());
+					text5 = (TextView) activity.findViewById(R.id.textView5);
+					text5.setText(averageRating);
+					
+				} else {
+					Log.d("rating", "The getRatings request failed.");
+				}
 			}
 		});
 	}

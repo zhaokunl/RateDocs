@@ -4,12 +4,10 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
-
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.os.StrictMode;
 import android.util.Log;
-
 import com.az.ratedocs.entities.DoctorInterface;
 import com.az.ratedocs.entities.EntitiesHandler;
 import com.az.ratedocs.entities.UserInfoInterface;
@@ -28,13 +26,10 @@ public class ParseHandler implements EntitiesHandler{
 	private static ArrayList<DoctorInterface> currentDoctorList;
 
 	public ParseHandler() {
-		Log.d("empty handler", "instead");
 	}
 	
 	@SuppressLint("NewApi")
 	public ParseHandler(Activity activity){
-		Log.d("we're here", "true");
-		
 		StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
 		StrictMode.setThreadPolicy(policy);
 		
@@ -51,7 +46,6 @@ public class ParseHandler implements EntitiesHandler{
 	/* Attempt to log a user in in the background using a callback */
 	@Override
 	public void logIn(String uname, String pword, Activity activity, Class<?> class1) {
-		Log.d("login in parsehandler", "true");
 		ParseUser.logInInBackground(uname, pword,  new ParseLoginCallback(activity, class1));
 	}
 

@@ -9,15 +9,12 @@ import com.az.ratedocs.entities.EntitiesHandler;
 import com.az.ratedocs.entities.HandlerFactory;
 import com.az.ratedocs.exceptionhandler.WebServiceException;
 import com.az.ratedocs.utilities.StartIntent;
-
 import android.app.Activity;
-import android.os.AsyncTask;
 import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 
 public class OnClickSignInActivity implements OnClickInterface {
 	Activity activity;

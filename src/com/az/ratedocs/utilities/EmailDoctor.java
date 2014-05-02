@@ -2,9 +2,11 @@ package com.az.ratedocs.utilities;
 
 import java.util.ArrayList;
 import java.util.List;
+
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemSelectedListener;
@@ -12,8 +14,13 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
+
 import com.az.ratedocs.R;
 import com.az.ratedocs.model.ParseDoctor;
+import com.az.ratedocs.webservice.PConstants;
+import com.parse.GetCallback;
+import com.parse.ParseObject;
+import com.parse.ParseQuery;
 
 public class EmailDoctor implements OnItemSelectedListener{
 	
@@ -24,15 +31,39 @@ public class EmailDoctor implements OnItemSelectedListener{
     private Activity activity;
     private Context context;
 	private Button request;
-	private ParseDoctor doc;
+	private ParseObject doc;
 	private EditText t;
+	private String value;
 	
-	public EmailDoctor(Activity activity, Context context){
+	public EmailDoctor(Activity activity, Context context, String value){
 		this.activity = activity;
-		this.context = context;
+		this.value = value;
+		this.context =context;
 		s1 = (Spinner) activity.findViewById(R.id.spinner1);
 		s2 = (Spinner) activity.findViewById(R.id.spinner2);
 		t = (EditText) activity.findViewById(R.id.editText6);
+		
+		
+		ParseQuery<ParseObject> query = ParseQuery.getQuery(PConstants.PARSE_DOCTOR);
+		query.whereEqualTo("ID", value);
+		
+		query.getFirstInBackground(new GetCallback<ParseObject>() {
+			public void done(ParseObject object, com.parse.ParseException e) {
+				Log.d("oh", "ueeeefsasdfasgfsadfjhkashj");
+				
+				
+				if (object == null) {
+					Log.d("score", "The getFirst request failed.");
+				} else {
+                    Log.d("doctor constructor", "true");
+					doc = object;
+					requestAppointment();
+				}
+			}
+	    });
+		
+		
+		requestAppointment();
 	}
 
 	public void requestAppointment() {
@@ -68,8 +99,10 @@ public class EmailDoctor implements OnItemSelectedListener{
 
 			@Override
 			public void onClick(View arg0) {
+				ParseDoctor d = new ParseDoctor(doc);
+				
 				Intent intentEmail = new Intent(Intent.ACTION_SEND);
-				intentEmail.putExtra(Intent.EXTRA_EMAIL, new String[] { doc.getEmail() });
+				intentEmail.putExtra(Intent.EXTRA_EMAIL, new String[] { d.getEmail() });
 				intentEmail.putExtra(Intent.EXTRA_SUBJECT, subject.toString());
 				intentEmail.putExtra(Intent.EXTRA_TEXT, message.toString());
 				intentEmail.setType(Constants.EMAIL_TYPE);

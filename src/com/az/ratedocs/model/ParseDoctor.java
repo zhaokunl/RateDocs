@@ -3,20 +3,16 @@ package com.az.ratedocs.model;
 import java.util.ArrayList;
 
 import android.app.Activity;
-import android.graphics.Bitmap;
 import android.util.Log;
-
 import com.az.ratedocs.entities.DoctorInterface;
 import com.az.ratedocs.exceptionhandler.WebServiceException;
 import com.az.ratedocs.webservice.PConstants;
 import com.az.ratedocs.webservice.ParseSaveCallback;
 import com.parse.GetCallback;
-import com.parse.GetDataCallback;
 import com.parse.ParseException;
 import com.parse.ParseFile;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
-import com.parse.ParseUser;
 
 public class ParseDoctor implements DoctorInterface {
 
@@ -52,32 +48,27 @@ public class ParseDoctor implements DoctorInterface {
 		this.doctor = doctor;
 	}
 
-	/* get the title of the doctor */
 	@Override
 	public String getId() {
 		return doctor.getString(PConstants.PARSE_ID);
 	}
 
-	/* get the author name of the doctor */
 	@Override
 	public String getName() {
 		if (doctor == null) return "oh";
 		else return doctor.getString(PConstants.PARSE_NAME);
 	}
 
-	/* get the ISBN of the doctor */
 	@Override
 	public String getSex() {
 		return doctor.getString(PConstants.PARSE_SEX);
 	}
 
-	/* get the message from the owner of the doctor */
 	@Override
 	public String getSpecialization() {
 		return doctor.getString(PConstants.PARSE_SPECIALIZATION);
 	}
 
-	/* get the phone number of the doctor's owner */
 	@Override
 	public String getAddress() {
 		return doctor.getString(PConstants.PARSE_ADDRESS);
@@ -103,8 +94,6 @@ public class ParseDoctor implements DoctorInterface {
 		return doctor.getParseFile(PConstants.PARSE_PHOTO);
 	}
 
-
-	/* set the doctor title, author name, ISBN, message, phone, emailID, image */
 	@Override
 	public void setId(String id) {
 		doctor.put(PConstants.PARSE_ID, id);

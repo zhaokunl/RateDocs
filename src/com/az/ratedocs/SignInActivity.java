@@ -5,12 +5,8 @@ import android.content.pm.ActivityInfo;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.view.Menu;
-
 import com.az.ratedocs.onclick.OnClickFactory;
 import com.az.ratedocs.onclick.OnClickInterface;
-import com.az.ratedocs.webservice.PConstants;
-import com.parse.Parse;
-import com.parse.ParseAnalytics;
 
 public class SignInActivity extends Activity {
 	
