@@ -67,7 +67,6 @@ public class OnClickAddComments implements OnClickInterface {
 		}
 
 		username = ParseUser.getCurrentUser().getUsername();
-//		username = name;
 		id = doc_id;
 
 		ParseQuery<ParseObject> query = ParseQuery.getQuery("ratings");

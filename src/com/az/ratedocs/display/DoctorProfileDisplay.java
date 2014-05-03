@@ -12,11 +12,9 @@ import com.parse.ParseFile;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
 import android.app.Activity;
-import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.util.Log;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
@@ -26,17 +24,15 @@ import android.widget.RatingBar.OnRatingBarChangeListener;
 public class DoctorProfileDisplay extends DisplayHelper {
 
 	private Activity activity;
-	private Context context;
 	private RatingBar ratingBar;
-	private Button comment;
 	private String value;
-	TextView text5;
+	TextView text_rating;
 	private String id;
 	private String username;
-	TextView text1;
-	TextView text2;
-	TextView text3;
-	TextView text4;
+	TextView text_name;
+	TextView text_gender;
+	TextView text_speciality;
+	TextView text_address;
 	ParseFile fileObject;
 	ImageView pic;
 	ParseObject doctor;
@@ -56,7 +52,6 @@ public class DoctorProfileDisplay extends DisplayHelper {
 				if (object == null) {
 					Log.d("score", "The getFirst request failed.");
 				} else {
-					Log.d("doctor constructor", "true");
 					doctor = object;
 					display();
 					getTotalRating();
@@ -78,14 +73,15 @@ public class DoctorProfileDisplay extends DisplayHelper {
 
 		ParseDoctor object = new ParseDoctor(doctor);
 		Log.d("activity is whwat", activity.getClass().getName());
-		text1 = (TextView) activity.findViewById(R.id.textView1);
-		text1.setText(object.getName());
-		text2 = (TextView) activity.findViewById(R.id.textView2);
-		text2.setText(object.getSex());
-		text3 = (TextView) activity.findViewById(R.id.textView3);
-		text3.setText(object.getSpecialization());
-		text4 = (TextView) activity.findViewById(R.id.textView4);
-		text4.setText(object.getAddress());
+		text_name = (TextView) activity.findViewById(R.id.text_name);
+		text_name.setText(object.getName());
+		text_gender = (TextView) activity.findViewById(R.id.text_gender);
+		text_gender.setText(object.getSex());
+		text_speciality = (TextView) activity
+				.findViewById(R.id.text_speciality);
+		text_speciality.setText(object.getSpecialization());
+		text_address = (TextView) activity.findViewById(R.id.text_address);
+		text_address.setText(object.getAddress());
 
 		try {
 			fileObject = (ParseFile) object.getPhoto();
@@ -95,11 +91,11 @@ public class DoctorProfileDisplay extends DisplayHelper {
 				public void done(byte[] data, com.parse.ParseException e) {
 
 					if (e == null) {
-						try{
-						bmp = BitmapFactory.decodeByteArray(data, 0,
-								data.length);
-						}catch (OutOfMemoryError error){
-							
+						try {
+							bmp = BitmapFactory.decodeByteArray(data, 0,
+									data.length);
+						} catch (OutOfMemoryError error) {
+
 						}
 
 						pic = (ImageView) activity.findViewById(R.id.image);
@@ -164,8 +160,9 @@ public class DoctorProfileDisplay extends DisplayHelper {
 
 					String averageRating = String.format("%.2f",
 							sum / scores.size());
-					text5 = (TextView) activity.findViewById(R.id.textView5);
-					text5.setText(averageRating);
+					text_rating = (TextView) activity
+							.findViewById(R.id.text_rating);
+					text_rating.setText(averageRating);
 
 				} else {
 					Log.d("rating", "The getRatings request failed.");

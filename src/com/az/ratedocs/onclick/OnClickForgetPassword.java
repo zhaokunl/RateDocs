@@ -9,7 +9,6 @@ import com.az.ratedocs.R;
 import com.az.ratedocs.entities.EntitiesHandler;
 import com.az.ratedocs.entities.HandlerFactory;
 
-
 public class OnClickForgetPassword implements OnClickInterface{
 	Activity activity;
 	

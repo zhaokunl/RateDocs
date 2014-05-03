@@ -12,7 +12,7 @@
         android:hint="@string/usernameHint"
         android:inputType="text"
         android:maxLength="15"
-        android:textColor="@color/white"
+        android:textColor="@color/black"
         android:textSize="25sp" />
 
     <EditText
@@ -24,7 +24,7 @@
         android:layout_marginTop="25dp"
         android:hint="@string/emailHint"
         android:inputType="textEmailAddress"
-        android:textColor="@color/white"
+        android:textColor="@color/black"
         android:textSize="25sp" />
 
     <EditText
@@ -37,7 +37,7 @@
         android:hint="@string/passwordHint"
         android:inputType="textPassword"
         android:maxLength="10"
-        android:textColor="@color/white"
+        android:textColor="@color/black"
         android:textSize="25sp" />
 
     <EditText
@@ -49,7 +49,7 @@
         android:layout_marginTop="25dp"
         android:hint="@string/confirmPasswordHint"
         android:inputType="textPassword"
-        android:textColor="@color/white"
+        android:textColor="@color/black"
         android:textSize="25sp" />
 
     <Button
@@ -60,6 +60,6 @@
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="56dp"
         android:text="@string/createAccount"
-        android:textColor="@color/white" />
+        android:textColor="@color/black" />
 
 </RelativeLayout>

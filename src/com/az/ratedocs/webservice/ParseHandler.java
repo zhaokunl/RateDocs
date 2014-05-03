@@ -7,7 +7,6 @@ import java.util.List;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.os.StrictMode;
-import android.util.Log;
 import com.az.ratedocs.entities.DoctorInterface;
 import com.az.ratedocs.entities.EntitiesHandler;
 import com.az.ratedocs.entities.UserInfoInterface;

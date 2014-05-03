@@ -157,7 +157,6 @@ public class OnClickDoctorList implements OnClickInterface {
                 for (int i = 0; i < number; i++) {
                     if (arg2 == i) {
                         Intent i1 = new Intent(context, DoctorProfileActivity.class);
-//                      i1.putExtra("id", ids.get(i));
                         i1.putExtra("id", mylist.get(i).get("id"));
                         i1.putExtra("username", username);
                         activity.startActivity(i1);

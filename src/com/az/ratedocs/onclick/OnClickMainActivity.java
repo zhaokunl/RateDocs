@@ -1,17 +1,21 @@
 package com.az.ratedocs.onclick;
 
 import com.az.ratedocs.CreateAccountActivity;
+import com.az.ratedocs.DoctListActivity;
 import com.az.ratedocs.ForgetPasswordActivity;
+import com.az.ratedocs.LocalDoctorListActivity;
 import com.az.ratedocs.R;
 import com.az.ratedocs.SelectSpecialityActivity;
-import com.az.ratedocs.MainActivity;
 import com.az.ratedocs.entities.EntitiesHandler;
 import com.az.ratedocs.entities.HandlerFactory;
 import com.az.ratedocs.exceptionhandler.WebServiceException;
 import com.az.ratedocs.sqlite.DoctorDatabaseHelper;
 import com.az.ratedocs.utilities.StartIntent;
+import com.parse.ParseUser;
+
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -91,7 +95,7 @@ public class OnClickMainActivity implements OnClickInterface {
 	}
 	
 	public void skip() {
-		DoctorDatabaseHelper d = new DoctorDatabaseHelper(context);
-		d.getDoctorList();
+		Intent i1 = new Intent(context, LocalDoctorListActivity.class);
+		activity.startActivity(i1);
 	}
 }

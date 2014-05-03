@@ -55,7 +55,7 @@
                             android:textSize="20sp" />
 
                         <TextView
-                            android:id="@+id/textView1"
+                            android:id="@+id/text_name"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@string/text"
@@ -83,7 +83,7 @@
                             android:textSize="20sp" />
 
                         <TextView
-                            android:id="@+id/textView2"
+                            android:id="@+id/text_gender"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@string/text"
@@ -108,7 +108,7 @@
                             android:textSize="20sp" />
 
                         <TextView
-                            android:id="@+id/textView3"
+                            android:id="@+id/text_speciality"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@string/text"
@@ -133,7 +133,7 @@
                             android:textSize="20sp" />
 
                         <TextView
-                            android:id="@+id/textView4"
+                            android:id="@+id/text_address"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@string/text"
@@ -202,7 +202,7 @@
                             android:textSize="20sp" />
 
                         <TextView
-                            android:id="@+id/textView5"
+                            android:id="@+id/text_rating"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@string/text"

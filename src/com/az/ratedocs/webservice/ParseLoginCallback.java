@@ -3,7 +3,6 @@ package com.az.ratedocs.webservice;
 import android.app.Activity;
 import android.util.Log;
 import android.widget.Toast;
-
 import com.az.ratedocs.utilities.StartIntent;
 import com.parse.LogInCallback;
 import com.parse.ParseException;
