@@ -1,5 +1,8 @@
 package com.az.ratedocs.exceptionhandler;
 
+/* Throws exception when the fields are incomplete when users create new accounts.
+ * */
+
 import android.annotation.SuppressLint;
 import java.util.Arrays;
 

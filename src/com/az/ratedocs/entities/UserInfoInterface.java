@@ -1,5 +1,8 @@
 package com.az.ratedocs.entities;
 
+/* This interface allows classes to generically access to user object.
+ * */
+
 import android.app.Activity;
 
 public interface UserInfoInterface {

@@ -1,5 +1,8 @@
 package com.az.ratedocs;
 
+/* This activity displays a list of specialties and enable the users to choose one.
+ * */
+
 import com.az.ratedocs.onclick.OnClickFactory;
 import com.az.ratedocs.onclick.OnClickInterface;
 import android.app.Activity;

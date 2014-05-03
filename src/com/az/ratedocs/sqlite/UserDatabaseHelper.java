@@ -1,5 +1,8 @@
 package com.az.ratedocs.sqlite;
 
+/* This helper handles all the local user database related methods.
+ * */
+
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;

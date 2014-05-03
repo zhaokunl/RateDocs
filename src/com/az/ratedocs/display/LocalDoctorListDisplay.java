@@ -1,12 +1,13 @@
 package com.az.ratedocs.display;
 
+/* This class displays a list of doctors retrieved from the local database. 
+ * */
+
 import java.util.ArrayList;
 import java.util.HashMap;
-
 import com.az.ratedocs.R;
 import com.az.ratedocs.model.Doctor;
 import com.az.ratedocs.sqlite.DoctorDatabaseHelper;
-
 import android.app.Activity;
 import android.content.Context;
 import android.util.Log;

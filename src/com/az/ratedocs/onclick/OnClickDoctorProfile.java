@@ -1,5 +1,8 @@
 package com.az.ratedocs.onclick;
 
+/* Onclick actions in the DoctorProfileActivity class.
+ * */
+
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;

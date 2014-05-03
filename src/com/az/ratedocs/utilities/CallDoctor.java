@@ -1,5 +1,8 @@
 package com.az.ratedocs.utilities;
 
+/* This class enable users to make a call with a given phone number.
+ * */
+
 import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;

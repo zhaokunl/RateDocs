@@ -1,5 +1,8 @@
 package com.az.ratedocs.webservice;
 
+/* Parse call back for all the exceptions sign up method.
+ * */
+
 import android.app.Activity;
 import android.widget.Toast;
 import com.az.ratedocs.utilities.StartIntent;

@@ -1,5 +1,10 @@
 package com.az.ratedocs.entities;
 
+/* This interface allows classes to generically generate entities including doctor, user 
+ * and rating, as well as to generically access the server.
+ * 
+ * */
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import com.az.ratedocs.exceptionhandler.WebServiceException;

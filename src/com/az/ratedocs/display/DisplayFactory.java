@@ -1,8 +1,10 @@
 package com.az.ratedocs.display;
 
+/* This factory assigns display classes to their corresponding activity classes.
+ * */
+
 import android.app.Activity;
 import android.content.Context;
-
 import com.az.ratedocs.DoctorProfileActivity;
 import com.az.ratedocs.LocalDoctorListActivity;
 

@@ -1,5 +1,8 @@
 package com.az.ratedocs.webservice;
 
+/* Parse callback for login method.
+ * */
+
 import android.app.Activity;
 import android.util.Log;
 import android.widget.Toast;

@@ -1,5 +1,9 @@
 package com.az.ratedocs.entities;
 
+/* This interface allows classes to generically access to Doctor object, both local database
+ * doctor and parse web doctor object here in our case.
+ * */
+
 import java.util.ArrayList;
 
 public interface DoctorInterface {

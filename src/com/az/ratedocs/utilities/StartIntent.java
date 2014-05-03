@@ -1,5 +1,8 @@
 package com.az.ratedocs.utilities;
 
+/* This abstract class starts the given activity.
+ * */
+
 import android.app.Activity;
 import android.content.Intent;
 

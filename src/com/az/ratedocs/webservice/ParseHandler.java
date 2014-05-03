@@ -1,5 +1,8 @@
 package com.az.ratedocs.webservice;
 
+/* This handler handles all Parse related login/create account/forgetpassword methods.
+ * */
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;

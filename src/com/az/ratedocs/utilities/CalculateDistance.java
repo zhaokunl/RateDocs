@@ -1,5 +1,8 @@
 package com.az.ratedocs.utilities;
 
+/* This class calculates the distance between user current location with a given location.
+ * */
+
 import android.app.Activity;
 import android.content.Context;
 import android.location.Location;

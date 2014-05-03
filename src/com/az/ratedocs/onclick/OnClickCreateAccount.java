@@ -1,5 +1,8 @@
 package com.az.ratedocs.onclick;
 
+/* Onclick actions in the CreateAccountActivity class.
+ * */
+
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.view.View;

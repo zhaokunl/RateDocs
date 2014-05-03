@@ -1,5 +1,8 @@
 package com.az.ratedocs.model;
 
+/* Parse web database rating object.
+ * */
+
 import com.az.ratedocs.entities.RatingInterface;
 import com.az.ratedocs.webservice.PConstants;
 import com.parse.ParseObject;

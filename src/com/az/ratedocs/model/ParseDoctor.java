@@ -1,5 +1,8 @@
 package com.az.ratedocs.model;
 
+/* Parse web database doctor object.
+ * */
+
 import java.util.ArrayList;
 
 import android.app.Activity;

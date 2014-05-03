@@ -1,5 +1,9 @@
 package com.az.ratedocs.exceptionhandler;
 
+/* Throws exception when users type different passwords for password field and confirmpassword
+ * field when they're creating a new account.
+ * */
+
 import android.annotation.SuppressLint;
 import java.io.Serializable;
 import java.util.Arrays;

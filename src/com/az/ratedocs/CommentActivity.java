@@ -1,8 +1,10 @@
 package com.az.ratedocs;
 
+/* This activity enable users to add comments for a certain doctor.
+ * */
+
 import com.az.ratedocs.onclick.OnClickFactory;
 import com.az.ratedocs.onclick.OnClickInterface;
-
 import android.app.Activity;
 import android.os.Bundle;
 

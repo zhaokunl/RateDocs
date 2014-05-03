@@ -1,5 +1,8 @@
 package com.az.ratedocs.utilities;
 
+/* This class enables the user to get the current location of the device.
+ * */
+
 import android.content.Context;
 import android.location.Location;
 import android.location.LocationListener;

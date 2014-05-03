@@ -1,5 +1,8 @@
 package com.az.ratedocs.onclick;
 
+/* Onclick actions in the ForgetPasswordActivity class.
+ * */
+
 import android.app.Activity;
 import android.view.View;
 import android.view.View.OnClickListener;

@@ -1,5 +1,8 @@
 package com.az.ratedocs.onclick;
 
+/* Onclick actions in the CommentActivity class.
+ * */
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;

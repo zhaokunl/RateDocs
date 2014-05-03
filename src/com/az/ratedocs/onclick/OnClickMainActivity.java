@@ -1,5 +1,8 @@
 package com.az.ratedocs.onclick;
 
+/* Onclick actions in the MainActivity class.
+ * */
+
 import com.az.ratedocs.CreateAccountActivity;
 import com.az.ratedocs.DoctListActivity;
 import com.az.ratedocs.ForgetPasswordActivity;

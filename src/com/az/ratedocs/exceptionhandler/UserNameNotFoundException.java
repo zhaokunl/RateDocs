@@ -1,5 +1,8 @@
 package com.az.ratedocs.exceptionhandler;
 
+/* Throws an exception when the input username is not in the data base.
+ * */
+
 import android.annotation.SuppressLint;
 import java.io.Serializable;
 import java.util.Arrays;

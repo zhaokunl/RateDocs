@@ -1,5 +1,8 @@
 package com.az.ratedocs.webservice;
 
+/* This class records all the constants for Parse use.
+ * */
+
 public class PConstants {
 	public static final String PARSE_ID = "id";
 	public static final String PARSE_NAME = "name";

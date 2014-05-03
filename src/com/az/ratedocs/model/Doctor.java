@@ -1,5 +1,8 @@
 package com.az.ratedocs.model;
 
+/* Local database doctor object.
+ * */
+
 import java.util.ArrayList;
 import com.az.ratedocs.entities.DoctorInterface;
 

@@ -1,5 +1,9 @@
 package com.az.ratedocs.exceptionhandler;
 
+/* Throws an exception when the internet connection is not working properly.
+ * */
+
+import android.annotation.SuppressLint;
 import java.io.Serializable;
 import java.util.Arrays;
 
@@ -10,6 +14,7 @@ public class WebServiceException extends Exception implements Serializable{
 		super(string);
 	}
 
+	@SuppressLint("NewApi")
 	@Override
 	public String toString() {
 		return "WebServiceException [fillInStackTrace()=" + fillInStackTrace()

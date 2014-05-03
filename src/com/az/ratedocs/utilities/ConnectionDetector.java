@@ -1,4 +1,7 @@
-package com.az.ratedocs;
+package com.az.ratedocs.utilities;
+
+/* This class detects if the network connection is working or not.
+ * */
 
 import android.content.Context;
 import android.net.ConnectivityManager;

@@ -1,5 +1,8 @@
 package com.az.ratedocs.onclick;
 
+/* This factory associates the OnClick classes with corresponding activity classes.
+ * */
+
 import android.app.Activity;
 import android.content.Context;
 import com.az.ratedocs.CommentActivity;

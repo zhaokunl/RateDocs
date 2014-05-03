@@ -1,8 +1,10 @@
 package com.az.ratedocs;
 
+/* This activity enables users to create new accounts.
+ * */
+
 import com.az.ratedocs.onclick.OnClickFactory;
 import com.az.ratedocs.onclick.OnClickInterface;
-
 import android.app.Activity;
 import android.os.Bundle;
 

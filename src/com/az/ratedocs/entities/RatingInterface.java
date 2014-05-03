@@ -1,5 +1,8 @@
 package com.az.ratedocs.entities;
 
+/* This interface allows classes to generically access to the rating object.
+ * */
+
 public interface RatingInterface {
 	public Double getRating();
 	public String getComment();

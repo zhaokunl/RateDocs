@@ -1,5 +1,10 @@
 package com.az.ratedocs;
 
+/* Main activity displays the main page of the app, and it enables the users to log in with
+ * existing username and password, or choose to create new account/forget password/skip log
+ * in.
+ * */
+
 import android.app.Activity;
 import android.content.pm.ActivityInfo;
 import android.content.res.Configuration;

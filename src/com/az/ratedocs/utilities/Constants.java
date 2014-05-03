@@ -1,5 +1,8 @@
 package com.az.ratedocs.utilities;
 
+/* This class records the constants used in the utilities package.
+ * */
+
 public class Constants {
 	public static final String SUBJECT = "Appointment from RateDocs";
 	public static final String EMAIL_TYPE = "message/rfc822";

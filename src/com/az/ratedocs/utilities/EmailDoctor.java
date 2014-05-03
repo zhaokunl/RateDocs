@@ -1,5 +1,8 @@
 package com.az.ratedocs.utilities;
 
+/* This class enable users to select a time and email the doctor for an appointment.
+ * */
+
 import android.app.Activity;
 import android.content.Intent;
 import android.util.Log;

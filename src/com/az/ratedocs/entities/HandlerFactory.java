@@ -1,5 +1,8 @@
 package com.az.ratedocs.entities;
 
+/* 
+ * */
+
 import android.app.Activity;
 import com.az.ratedocs.webservice.ParseHandler;
 

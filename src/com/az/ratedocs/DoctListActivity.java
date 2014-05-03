@@ -1,5 +1,9 @@
 package com.az.ratedocs;
 
+/* This activity shows a list of doctors with basic information including doctor name, 
+ * distance from the current user and doctor phone number.
+ * */
+
 import android.app.Activity;
 import android.os.Bundle;
 import com.az.ratedocs.onclick.OnClickFactory;

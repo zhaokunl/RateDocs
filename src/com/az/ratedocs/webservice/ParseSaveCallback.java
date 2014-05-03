@@ -1,5 +1,8 @@
 package com.az.ratedocs.webservice;
 
+/* Parse call back for save account method.
+ * */
+
 import android.app.Activity;
 import android.widget.Toast;
 import com.parse.ParseException;

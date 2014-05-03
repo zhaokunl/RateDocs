@@ -1,5 +1,8 @@
 package com.az.ratedocs.sqlite;
 
+/* This helper handles all the local doctor database related methods.
+ * */
+
 import java.util.LinkedList;
 import java.util.List;
 

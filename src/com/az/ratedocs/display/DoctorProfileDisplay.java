@@ -1,5 +1,8 @@
 package com.az.ratedocs.display;
 
+/* This class displays the page of the doctor profile. 
+ * */
+
 import java.util.ArrayList;
 import java.util.List;
 import com.az.ratedocs.R;
