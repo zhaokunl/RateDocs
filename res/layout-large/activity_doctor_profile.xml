@@ -52,7 +52,7 @@
                             android:layout_height="wrap_content"
                             android:text="Name: "
                             android:textColor="@color/white"
-                            android:textSize="20sp" />
+                            android:textSize="25sp" />
 
                         <TextView
                             android:id="@+id/textView1"
@@ -60,7 +60,7 @@
                             android:layout_height="wrap_content"
                             android:text="@string/text"
                             android:textColor="@color/white"
-                            android:textSize="20sp" />
+                            android:textSize="25sp" />
                     </LinearLayout>
                 </TableRow>
 
@@ -80,7 +80,7 @@
                             android:layout_height="wrap_content"
                             android:text="Gender: "
                             android:textColor="@color/white"
-                            android:textSize="20sp" />
+                            android:textSize="25sp" />
 
                         <TextView
                             android:id="@+id/textView2"
@@ -88,7 +88,7 @@
                             android:layout_height="wrap_content"
                             android:text="@string/text"
                             android:textColor="@color/white"
-                            android:textSize="20sp" />
+                            android:textSize="25sp" />
                     </LinearLayout>
                 </TableRow>
 
@@ -105,7 +105,7 @@
                             android:layout_height="wrap_content"
                             android:text="Speciality: "
                             android:textColor="@color/white"
-                            android:textSize="20sp" />
+                            android:textSize="25sp" />
 
                         <TextView
                             android:id="@+id/textView3"
@@ -113,7 +113,7 @@
                             android:layout_height="wrap_content"
                             android:text="@string/text"
                             android:textColor="@color/white"
-                            android:textSize="20sp" />
+                            android:textSize="25sp" />
                     </LinearLayout>
                 </TableRow>
 
@@ -130,7 +130,7 @@
                             android:layout_height="wrap_content"
                             android:text="Address: "
                             android:textColor="@color/white"
-                            android:textSize="20sp" />
+                            android:textSize="25sp" />
 
                         <TextView
                             android:id="@+id/textView4"
@@ -138,7 +138,7 @@
                             android:layout_height="wrap_content"
                             android:text="@string/text"
                             android:textColor="@color/white"
-                            android:textSize="20sp" />
+                            android:textSize="25sp" />
                     </LinearLayout>
                 </TableRow>
 
@@ -151,27 +151,27 @@
 
                         <ImageButton
                             android:id="@+id/call"
-                            android:layout_width="40dp"
+                            android:layout_width="70dp"
                             android:layout_height="wrap_content"
                             android:src="@android:drawable/stat_sys_speakerphone" />
 
                         <Spinner
                             android:id="@+id/spinner1"
-                            android:layout_width="40dp"
+                            android:layout_width="70dp"
                             android:layout_height="wrap_content"
                             android:entries="@array/months"
                             android:textColor="@color/white" />
 
                         <Spinner
                             android:id="@+id/spinner2"
-                            android:layout_width="40dp"
+                            android:layout_width="70dp"
                             android:layout_height="wrap_content"
                             android:entries="@array/day"
                             android:textColor="@color/white" />
 
                         <EditText
                             android:id="@+id/editText6"
-                            android:layout_width="40dp"
+                            android:layout_width="70dp"
                             android:layout_height="wrap_content"
                             android:inputType="text"
                             android:textColor="@color/white" >
@@ -182,7 +182,7 @@
                             android:layout_width="fill_parent"
                             android:layout_height="wrap_content"
                             android:text="Request"
-                            android:textColor="@color/black" />
+                            android:textColor="@color/white" />
                     </LinearLayout>
                 </TableRow>
 
@@ -199,7 +199,7 @@
                             android:layout_height="wrap_content"
                             android:text="Ratings: "
                             android:textColor="@color/white"
-                            android:textSize="20sp" />
+                            android:textSize="25sp" />
 
                         <TextView
                             android:id="@+id/textView5"
@@ -207,7 +207,7 @@
                             android:layout_height="wrap_content"
                             android:text="@string/text"
                             android:textColor="@color/white"
-                            android:textSize="20sp" />
+                            android:textSize="25sp" />
                     </LinearLayout>
                 </TableRow>
 
@@ -227,7 +227,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="Comments"
-                        android:textColor="@color/black" />
+                        android:textColor="@color/white" />
                 </TableRow>
             </TableLayout>
         </LinearLayout>

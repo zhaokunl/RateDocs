@@ -24,7 +24,7 @@
         android:hint="@string/usernameHint"
         android:maxLines="1"
         android:singleLine="true"
-        android:textColor="@color/black"
+        android:textColor="@color/white"
         android:textSize="25sp" />
 
     <EditText
@@ -38,7 +38,7 @@
         android:inputType="textPassword"
         android:maxLines="1"
         android:singleLine="true"
-        android:textColor="@color/black"
+        android:textColor="@color/white"
         android:textSize="25sp" />
 
     <Button
@@ -48,7 +48,7 @@
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="16dp"
         android:text="@string/action_sign_in_short"
-        android:textColor="@color/black" />
+        android:textColor="@color/white" />
 
     <TextView
         android:id="@+id/orTV"
@@ -57,7 +57,7 @@
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="16dp"
         android:text="@string/orText"
-        android:textColor="@color/black"
+        android:textColor="@color/white"
         android:textSize="15sp" />
 
     <Button
@@ -66,20 +66,20 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:text="@string/action_register"
-        android:textColor="@color/black" />
+        android:textColor="@color/white" />
 
     <Button
         android:id="@+id/btn_ForgetPass"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:text="Forgot Password"
-        android:textColor="@color/black" />
+        android:textColor="@color/white" />
     
     <Button
         android:id="@+id/btn_skip"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:text="Skip"
-        android:textColor="@color/black" />
+        android:textColor="@color/white" />
 
 </LinearLayout>

@@ -22,29 +22,29 @@
 
                 <TextView
                     android:id="@+id/text1"
-                    android:layout_width="100sp"
+                    android:layout_width="200sp"
                     android:layout_height="wrap_content"
                     android:text="Name"
                     android:textColor="@color/white"
-                    android:textSize="15sp" />
+                    android:textSize="25sp" />
 
                 <TextView
                     android:id="@+id/text2"
-                    android:layout_width="100sp"
+                    android:layout_width="200sp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="Distance (km)"
                     android:textColor="@color/white"
-                    android:textSize="15sp" />
+                    android:textSize="25sp" />
 
                 <TextView
                     android:id="@+id/text3"
-                    android:layout_width="100sp"
+                    android:layout_width="200sp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="Phone"
                     android:textColor="@color/white"
-                    android:textSize="15sp" />
+                    android:textSize="25sp" />
             </LinearLayout>
         </TableRow>
     </TableLayout>

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/LoginFormContainer"
+    android:background="@drawable/background" >
+
+    <EditText
+        android:id="@+id/etUsername"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="25dp"
+        android:hint="@string/usernameHint"
+        android:inputType="text"
+        android:maxLength="15"
+        android:textColor="@color/white"
+        android:textSize="25sp" />
+
+    <EditText
+        android:id="@+id/etEmail"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/etUsername"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="25dp"
+        android:hint="@string/emailHint"
+        android:inputType="textEmailAddress"
+        android:textColor="@color/white"
+        android:textSize="25sp" />
+
+    <EditText
+        android:id="@+id/etPassword"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/etEmail"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="25dp"
+        android:hint="@string/passwordHint"
+        android:inputType="textPassword"
+        android:maxLength="10"
+        android:textColor="@color/white"
+        android:textSize="25sp" />
+
+    <EditText
+        android:id="@+id/etPasswordConfirm"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/etPassword"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="25dp"
+        android:hint="@string/confirmPasswordHint"
+        android:inputType="textPassword"
+        android:textColor="@color/white"
+        android:textSize="25sp" />
+
+    <Button
+        android:id="@+id/btnCreateAccount"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/etPasswordConfirm"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="56dp"
+        android:text="@string/createAccount"
+        android:textColor="@color/white" />
+
+</RelativeLayout>

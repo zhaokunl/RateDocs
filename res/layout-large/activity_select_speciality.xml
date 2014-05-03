@@ -24,7 +24,7 @@
                 android:gravity="center"
                 android:text="Search for doctors by specialities:"
                 android:textColor="@color/white"
-                android:textSize="15sp" />
+                android:textSize="25sp" />
 
             <Button
                 android:id="@+id/button_all"
@@ -32,70 +32,70 @@
                 android:layout_height="match_parent"
                 android:layout_marginTop="20dp"
                 android:text="All"
-                android:textColor="@color/black" />
+                android:textColor="@color/white" />
 
             <Button
                 android:id="@+id/button_cardiology"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:text="Cardiology"
-                android:textColor="@color/black" />
+                android:textColor="@color/white" />
 
             <Button
                 android:id="@+id/button_dentistry"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:text="Dentistry"
-                android:textColor="@color/black" />
+                android:textColor="@color/white" />
 
             <Button
                 android:id="@+id/button_dermatology"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:text="Dermatology"
-                android:textColor="@color/black" />
+                android:textColor="@color/white" />
 
             <Button
                 android:id="@+id/button_fm"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:text="Family Medicine"
-                android:textColor="@color/black" />
+                android:textColor="@color/white" />
 
             <Button
                 android:id="@+id/button_gs"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:text="General Surgery"
-                android:textColor="@color/black" />
+                android:textColor="@color/white" />
 
             <Button
                 android:id="@+id/button_nephrology"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:text="Nephrology"
-                android:textColor="@color/black" />
+                android:textColor="@color/white" />
 
             <Button
                 android:id="@+id/button_neurology"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:text="Neurology"
-                android:textColor="@color/black" />
+                android:textColor="@color/white" />
 
             <Button
                 android:id="@+id/button_og"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:text="Obstetrics and Gynecology"
-                android:textColor="@color/black" />
+                android:textColor="@color/white" />
 
             <Button
                 android:id="@+id/button_oncology"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:text="Oncology"
-                android:textColor="@color/black" />
+                android:textColor="@color/white" />
         </LinearLayout>
     </ScrollView>
 
