@@ -15,7 +15,7 @@
         android:textSize="25sp" />
 
     <TextView
-        android:id="@+id/distance"
+        android:id="@+id/email"
         android:layout_width="220sp"
         android:layout_height="wrap_content"
         android:layout_weight="1"

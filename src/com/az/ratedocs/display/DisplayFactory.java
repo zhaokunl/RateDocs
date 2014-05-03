@@ -1,13 +1,14 @@
 package com.az.ratedocs.display;
 
 import android.app.Activity;
+import android.content.Context;
 
 import com.az.ratedocs.DoctorProfileActivity;
 import com.az.ratedocs.LocalDoctorListActivity;
 
 public class DisplayFactory {
 	/* make a static object of type DisplayHelper */
-	public static DisplayHelper getDisplayHelper(Activity activity, String value) {
+	public static DisplayHelper getDisplayHelper(Activity activity, String value, Context context) {
 		Class<?> class1 = activity.getClass();
 		DisplayHelper dh;
 		
@@ -15,7 +16,7 @@ public class DisplayFactory {
 		if(class1 == DoctorProfileActivity.class) {
 			dh = new DoctorProfileDisplay(activity, value);
 		}  else if (class1 == LocalDoctorListActivity.class) {
-			dh = new LocalDoctorListDisplay(activity, value);
+			dh = new LocalDoctorListDisplay(activity, value, context);
 		}
 			else {
 			dh = null;

@@ -8,5 +8,6 @@
 	<classpathentry exported="true" kind="lib" path="libs/Parse-1.4.3.jar"/>
 	<classpathentry exported="true" kind="lib" path="libs/android-support-v7-appcompat.jar"/>
 	<classpathentry exported="true" kind="lib" path="libs/android-support-v4.jar"/>
+	<classpathentry exported="true" kind="lib" path="libs/sqliteassethelper-2.0.1.jar"/>
 	<classpathentry kind="output" path="bin/classes"/>
 </classpath>

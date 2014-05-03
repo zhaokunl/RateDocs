@@ -34,7 +34,7 @@ public class OnClickDoctorProfile implements OnClickInterface {
 			name = extras.getString("username");
 		}
 		
-		DisplayHelper bd = DisplayFactory.getDisplayHelper(activity, value);
+		DisplayHelper bd = DisplayFactory.getDisplayHelper(activity, value, context);
 		CallDoctor call = new CallDoctor(activity, value);
 		EmailDoctor email = new EmailDoctor(activity, value);
 		
