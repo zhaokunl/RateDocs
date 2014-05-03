@@ -21,7 +21,7 @@ public class DoctorDatabaseHelper extends SQLiteOpenHelper {
 	private static String DB_NAME = "doctor_profile";
 	private static String TABLE_DOCTOR = "doctor";
 	private static String TABLE_RATING = "rating";
-	
+
 	private SQLiteDatabase myDataBase;
 
 	private final Context myContext;
@@ -31,7 +31,7 @@ public class DoctorDatabaseHelper extends SQLiteOpenHelper {
 		super(context, DB_NAME, null, 1);
 		this.myContext = context;
 	}
-	
+
 	/**
 	 * Creates a empty database on the system and rewrites it with your own
 	 * database.
@@ -126,16 +126,12 @@ public class DoctorDatabaseHelper extends SQLiteOpenHelper {
 	@Override
 	public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 	}
-	
-	public List<Doctor> getDoctorList(String specialization) {
+
+	public List<Doctor> getDoctorList() {
 		List<Doctor> doctorlist = new LinkedList<Doctor>();
 		String query;
+		query = "SELECT  * FROM " + TABLE_DOCTOR;
 
-		if (specialization == "All") {
-			query = "SELECT  * FROM " + TABLE_DOCTOR;
-		} else {
-			query = "SELECT  * FROM " + TABLE_DOCTOR + " WHERE Specialization = '" + specialization + "'";
-		}
 		SQLiteDatabase db = this.getWritableDatabase();
 		Cursor cursor = db.rawQuery(query, null);
 		Doctor doctor = null;
@@ -158,7 +154,7 @@ public class DoctorDatabaseHelper extends SQLiteOpenHelper {
 	}
 
 	public Doctor getDoctorProfile(String id) {
-	
+
 		String query = "SELECT  * FROM " + TABLE_RATING + "WHERE _id =" + id;
 		SQLiteDatabase db = this.getWritableDatabase();
 		Cursor cursor = db.rawQuery(query, null);
