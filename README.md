@@ -1,8 +1,4 @@
-RateDocs
-========
+RateDocs -- Yelp for Doctors!
 
-Android App
-
-ok
 
 04/29/2014
