@@ -3,11 +3,30 @@ RateDocs -- Yelp for Doctors!
 
 ## Features
 
-- Enable users to browse doctor profiles in the nearby vicinity
+- Enables users to browse doctor profiles in the nearby vicinity
 
-- Allow users to view the ratings and reviews of doctors as well as share their own experience
+- Allows users to view the ratings and reviews of doctors as well as share their own experience
 
-- Provides emergency doctor contact list even without internet connection
+- Provides emergency doctor contact lists even when there's no internet connection
+
+## Data Layout
+
+####Doctor Profiles
+
+Profile Picture (png/jpg/jpeg)
+First Name (), Last Name, Email, Phone, Address, Longitude, Latitude, Rating, Comments
+
+####User
+
+First Name
+
+Last Name
+
+Email
+
+Phone
+
+Password
 
 ## Technology Set
 - **Language**: Java
