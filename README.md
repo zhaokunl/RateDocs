@@ -48,6 +48,4 @@ Please contact zac.li.cmu@gmail.com for more information about this project.
 
 ## License
 
-@ Zac Li 
-
 04/29/2014
