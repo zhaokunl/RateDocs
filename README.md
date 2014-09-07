@@ -23,7 +23,7 @@ RateDocs -- Yelp for Doctors!
 | Address       | String |       |
 | Longitude       | Double |       |
 | Latitude       | Double |       |
-| Rating       | List<Integer> |       |
+| Rating       | `List<Integer> `|       |
 | Comments       | List<String> |       |
 
 ####User
