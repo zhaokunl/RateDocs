@@ -20,26 +20,18 @@ RateDocs -- Yelp for Doctors!
 | Last Name       | String |     |
 | Email       | String |       |
 | Phone       | String |       |
-| Phone       | String |       |
-| Phone       | String |       |
-| Phone       | String |       |
-| Phone       | String |       |
-| Phone       | String |       |
-
-Profile Picture (png/jpg/jpeg)
-First Name (), Last Name, Email, Phone, Address, Longitude, Latitude, Rating, Comments
+| Address       | String |       |
+| Longitude       | Double |       |
+| Latitude       | Double |       |
+| Rating       | List<Integer> |       |
+| Comments       | List<String> |       |
 
 ####User
 
-First Name
-
-Last Name
-
-Email
-
-Phone
-
-Password
+| :---------: | :-----:| :------:|
+| Username       | String |     |
+| Email       | String |       |
+| Password       | String |       |
 
 ## Technology Set
 - **Language**: Java
