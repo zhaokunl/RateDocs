@@ -28,12 +28,14 @@ RateDocs -- Yelp for Doctors!
 
 ####User
 
+| Field       | Type   | Default  |
 | :---------: | :-----:| :------:|
 | Username       | String |     |
 | Email       | String |       |
 | Password       | String |       |
 
 ## Technology Set
+
 - **Language**: Java
 
 - **Design Pattern**: Model-View-Presenter
