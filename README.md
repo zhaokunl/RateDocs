@@ -13,6 +13,14 @@ RateDocs -- Yelp for Doctors!
 
 ####Doctor Profiles
 
+| Field       | Type   | Default  |
+| :---------: | :-----:| :------:|
+| Profile Picture| png/jpg/jpeg |  noimage.jpeg     |
+| First Name       | String |  {}     |
+| First Name       | String |  {}     |
+| First Name       | String |  {}     |
+| First Name       | String |  {}     |
+
 Profile Picture (png/jpg/jpeg)
 First Name (), Last Name, Email, Phone, Address, Longitude, Latitude, Rating, Comments
 
